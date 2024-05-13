@@ -8,7 +8,7 @@ public class MainGame {
         	MainMenu frame = new MainMenu();
             frame.setVisible(true);
             
-            System.out.println("test");
+            System.out.println("helloworld");
         });
     }
 }
