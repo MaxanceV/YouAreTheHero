@@ -1,6 +1,6 @@
 package Univers.classe;
 
-public abstract class AClasseGuerrier implements IClasse {
+public class AClasseGuerrier implements IClasse {
 	
 	@Override
 	public String getDescription() {

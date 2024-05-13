@@ -1,6 +1,6 @@
 package Univers.classe;
 
-public abstract class AClasseMage implements IClasse {
+public class AClasseMage implements IClasse {
 	
 	@Override
 	public String getDescription() {

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class InterfaceGame extends JFrame {
-	private static final long serialVersionUID = UniqueIdGenerator.generateUniqueId();
+	private static final long serialVersionUID = UniqueIdGenerator.generateUniqueIdLong();
 	private CardLayout cardLayout;
     private JPanel cardPanel; // Panel qui contient les différents "écrans" du jeu
 
@@ -17,6 +17,7 @@ public class InterfaceGame extends JFrame {
         cardPanel = new JPanel(cardLayout);
 
         initMenu();
+        initCharacterCreationUI();
         initGameUI(); // Méthode pour initialiser l'UI du jeu
 
         add(cardPanel);
@@ -44,9 +45,44 @@ public class InterfaceGame extends JFrame {
 
         cardPanel.add(gamePanel, "Game");
     }
+    
+    private void initCharacterCreationUI() {
+        JPanel characterCreationPanel = new JPanel(new GridLayout(5, 1, 10, 10)); // 5 lignes pour le nom, la race, la classe, le bouton
+
+        // Nom du personnage
+        characterCreationPanel.add(new JLabel("Entrez votre nom :"));
+        JTextField nameField = new JTextField();
+        characterCreationPanel.add(nameField);
+
+        // Sélection de la race
+        characterCreationPanel.add(new JLabel("Choisissez une race :"));
+        JComboBox<String> raceBox = new JComboBox<>(new String[]{"Humain", "Nain"});
+        characterCreationPanel.add(raceBox);
+
+        // Sélection de la classe
+        characterCreationPanel.add(new JLabel("Choisissez une classe :"));
+        JComboBox<String> classBox = new JComboBox<>(new String[]{"Guerrier", "Mage"});
+        characterCreationPanel.add(classBox);
+
+        // Bouton de confirmation
+        JButton confirmButton = new JButton("Confirmer");
+        confirmButton.addActionListener(e -> {
+            String name = nameField.getText();
+            String race = (String) raceBox.getSelectedItem();
+            String classe = (String) classBox.getSelectedItem();
+            // Logique pour créer le personnage
+            System.out.println("Création de : " + name + ", Race : " + race + ", Classe : " + classe);
+            // Peut-être revenir au jeu ou passer à l'écran suivant
+            cardLayout.show(cardPanel, "Game");
+        });
+        characterCreationPanel.add(confirmButton);
+
+        cardPanel.add(characterCreationPanel, "CharacterCreation");
+    }
+
 
     private void handleNewGame(ActionEvent e) {
-        cardLayout.show(cardPanel, "Game");
+        cardLayout.show(cardPanel, "CharacterCreation");
         // Logique pour démarrer une nouvelle partie
     }
 
