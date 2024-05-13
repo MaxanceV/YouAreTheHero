@@ -1,7 +1,5 @@
 package Representation;
 
-import java.util.HashMap;
-
 public class CTNode {
 
 	public CTNode() {
