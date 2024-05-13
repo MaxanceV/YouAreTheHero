@@ -7,6 +7,8 @@ public class MainGame {
         SwingUtilities.invokeLater(() -> {
         	MainMenu frame = new MainMenu();
             frame.setVisible(true);
+            
+            System.out.println("test");
         });
     }
 }

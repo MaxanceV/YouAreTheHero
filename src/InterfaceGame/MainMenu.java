@@ -3,7 +3,6 @@ package InterfaceGame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.UUID;
 
 public class MainMenu extends JFrame {
 	private static final long serialVersionUID = UniqueIdGenerator.generateUniqueId();
