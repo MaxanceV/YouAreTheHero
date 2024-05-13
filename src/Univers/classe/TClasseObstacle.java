@@ -1,6 +1,6 @@
 package Univers.classe;
 
-public final class TClasseObstacle extends AClasseGuerrier{
+public final class TClasseObstacle implements IClasse {
 
 	@Override
 	public String getDescription() {

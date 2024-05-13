@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class MainMenu extends JFrame {
+public class InterfaceGame extends JFrame {
 	private static final long serialVersionUID = UniqueIdGenerator.generateUniqueId();
 	private CardLayout cardLayout;
     private JPanel cardPanel; // Panel qui contient les différents "écrans" du jeu
 
-    public MainMenu() {
+    public InterfaceGame() {
         setTitle("Jeu d'Aventure");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
