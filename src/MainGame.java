@@ -10,7 +10,7 @@ public class MainGame {
 	            frame.setVisible(true);
 	            
 	        });
-	}
+	}//test
 	
     public static void main(String[] args) {
 
