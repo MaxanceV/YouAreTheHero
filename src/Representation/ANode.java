@@ -1,17 +1,17 @@
 package Representation;
 
 public abstract class ANode {
-	int id;
-	String description;
+	private int id;
+	private String description;
+	private String descriptionchoix;
 	
-	public ANode(int id, String desc) {
+	public ANode(int id, String desc, String descchoix) {
 		this.id = id;
 		this.description = desc;
+		this.descriptionchoix = descchoix;
 	}
 	
-	public abstract void startNode(); //Déroulé du node courant
-	
-	
+	public abstract void startNode();
 	
 	public int getId() {
 		return id;
@@ -29,5 +29,12 @@ public abstract class ANode {
 		this.description = description;
 	}
 	
+	public String getDescriptionChoix() {
+		return descriptionchoix;
+	}
+	
+	public void setDescriptionChoix(String descriptionchoix) {
+		this.descriptionchoix = descriptionchoix;
+	}
 
 }
