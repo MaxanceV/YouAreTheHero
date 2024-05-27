@@ -19,4 +19,8 @@ public final class TNodeFight extends ANodeInner {
 		
 	}
 
+	@Override
+	public ENodeType getNodeType() {
+		return ENodeType.FIGHT;
+	}
 }

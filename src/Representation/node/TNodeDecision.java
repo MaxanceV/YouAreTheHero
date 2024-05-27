@@ -31,4 +31,9 @@ public final class TNodeDecision extends ANodeInner {
 		}
 		this.chooseNext();
 	}
+	
+	@Override
+	public ENodeType getNodeType() {
+		return ENodeType.DECISION;
+	}
 }

@@ -17,4 +17,8 @@ public final class TNodeTerminal extends ANode {
 		System.out.println("Fin du jeu. Recommencer ?");
 	}
 
+	@Override
+	public ENodeType getNodeType() {
+		return ENodeType.TERMINAL;
+	}
 }

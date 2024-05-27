@@ -3,7 +3,7 @@ package Representation.node;
 public abstract class ANode {
 	private String id;
 	private String description;
-	private String descriptionchoix;
+	private String descriptionchoix; //Texte qui apparaitra pour les Node d'avant qui ont besoin de faire apparaitre le choix vers ce noeud. 
 	
 	public ANode(String id, String desc, String descchoix) {
 		this.id = id;
@@ -36,5 +36,7 @@ public abstract class ANode {
 	public void setDescriptionChoix(String descriptionchoix) {
 		this.descriptionchoix = descriptionchoix;
 	}
+	
+	public abstract ENodeType getNodeType();
 
 }

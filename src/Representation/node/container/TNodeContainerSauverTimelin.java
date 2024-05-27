@@ -3,6 +3,7 @@ package Representation.node.container;
 import Representation.node.ANode;
 import Representation.node.ANodeInner;
 import Representation.node.TNodeDecision;
+import Representation.node.TNodeTerminal;
 
 public class TNodeContainerSauverTimelin extends ANodeContainer {
 	
@@ -11,9 +12,9 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 	private final String END_OF_GAME = "end.of.game";
 
 	public TNodeContainerSauverTimelin() {
-		ANodeInner start = addNodeDecision(START_OF_GAME, "Début de l'aventure !", null);
-		ANodeInner milieu = addNodeDecision(MIDLE_OF_GAME,"Milieu de l'aventure","Aller au milieu de l'aventure");
-		ANodeInner fin = addNodeDecision(END_OF_GAME,null,"Aller à la fin de l'aventure");
+		TNodeDecision start = addNodeDecision(START_OF_GAME, "Début de l'aventure !", null);
+		TNodeDecision milieu = addNodeDecision(MIDLE_OF_GAME,"Milieu de l'aventure","Aller au milieu de l'aventure");
+		TNodeTerminal fin = addNodeTerminal(END_OF_GAME,null,"Aller à la fin de l'aventure");
 		
 		start.setChoix(new ANode[]{milieu,fin});
 		milieu.setChoix(new ANode[] {fin});

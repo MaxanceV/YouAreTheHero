@@ -29,4 +29,9 @@ public final class TNodeChance extends ANodeInner {
 		this.chooseNext();
 	}
 
+	@Override
+	public ENodeType getNodeType() {
+		return ENodeType.CHANCE;
+	}
+
 }
