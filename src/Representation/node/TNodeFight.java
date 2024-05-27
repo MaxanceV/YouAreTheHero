@@ -2,7 +2,7 @@ package Representation.node;
 
 public final class TNodeFight extends ANodeInner {
 
-	public TNodeFight(int id, String desc, String descchoix) {
+	public TNodeFight(String id, String desc, String descchoix) {
 		super(id, desc, descchoix);
 		// TODO Auto-generated constructor stub
 	}

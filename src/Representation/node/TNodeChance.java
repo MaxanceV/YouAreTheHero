@@ -2,7 +2,7 @@ package Representation.node;
 
 public final class TNodeChance extends ANodeInner {
 	
-	public TNodeChance(int id, String desc, String descchoix) {
+	public TNodeChance(String id, String desc, String descchoix) {
 		super(id, desc,descchoix);
 	}
 

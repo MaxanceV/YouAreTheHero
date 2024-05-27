@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public final class TNodeDecision extends ANodeInner {
 	
-	public TNodeDecision(int id, String desc, String descchoix) {
+	public TNodeDecision(String id, String desc, String descchoix) {
 		super(id, desc, descchoix);
 	}
 

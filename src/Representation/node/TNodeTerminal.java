@@ -2,7 +2,7 @@ package Representation.node;
 
 public final class TNodeTerminal extends ANode {
 
-	public TNodeTerminal(int id, String desc, String descchoix) {
+	public TNodeTerminal(String id, String desc, String descchoix) {
 		super(id, desc, descchoix);
 	}
 

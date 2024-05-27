@@ -1,11 +1,11 @@
 package Representation.node;
 
 public abstract class ANode {
-	private int id;
+	private String id;
 	private String description;
 	private String descriptionchoix;
 	
-	public ANode(int id, String desc, String descchoix) {
+	public ANode(String id, String desc, String descchoix) {
 		this.id = id;
 		this.description = desc;
 		this.descriptionchoix = descchoix;
@@ -13,11 +13,11 @@ public abstract class ANode {
 	
 	public abstract void startNode();
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
