@@ -1,8 +1,12 @@
-package Representation;
+package Representation.node.container;
 
-public class CTNode {
+import Representation.node.ANode;
+import Representation.node.ANodeInner;
+import Representation.node.TNodeDecision;
 
-	public CTNode() {
+public class TNodeContainerSauverTimelin extends ANodeContainer {
+
+	public TNodeContainerSauverTimelin() {
 		ANodeInner start = new TNodeDecision(0, "Début de l'aventure !", null);
 		ANodeInner milieu = new TNodeDecision(1,"Milieu de l'aventure","Aller au milieu de l'aventure");
 		ANodeInner fin = new TNodeDecision(2,null,"Aller à la fin de l'aventure");
@@ -12,5 +16,5 @@ public class CTNode {
 		start.startNode();
 	}
 		
-	}
 }
+

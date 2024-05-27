@@ -1,4 +1,4 @@
-package Representation;
+package Representation.node;
 
 import java.util.Scanner;
 

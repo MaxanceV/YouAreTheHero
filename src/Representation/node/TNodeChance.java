@@ -1,4 +1,4 @@
-package Representation;
+package Representation.node;
 
 public final class TNodeChance extends ANodeInner {
 	
@@ -12,7 +12,7 @@ public final class TNodeChance extends ANodeInner {
 		for(int i=0;i< this.getChoix().length;i++) {
 			System.out.println(this.getChoix()[i].getDescriptionChoix());
 		}
-		// TO DO
+		// TODO
 		//this.getChoix()[decisionprise].startNode();
 		return null;
 	}

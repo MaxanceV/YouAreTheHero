@@ -1,4 +1,4 @@
-package Representation;
+package Representation.node;
 
 public abstract class ANode {
 	private int id;

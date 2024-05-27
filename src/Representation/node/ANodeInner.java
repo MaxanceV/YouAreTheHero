@@ -1,4 +1,4 @@
-package Representation;
+package Representation.node;
 
 public abstract class ANodeInner extends ANode {
 	// Dispose d'une liste des ID des prochains noeuds. Les enfants d'InnerNode, decision et chance iront chercher

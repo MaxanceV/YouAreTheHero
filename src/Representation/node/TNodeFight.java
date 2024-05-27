@@ -1,4 +1,4 @@
-package Representation;
+package Representation.node;
 
 public final class TNodeFight extends ANodeInner {
 
