@@ -1,5 +1,9 @@
 package Representation.node;
 
+import javax.swing.JFrame;
+
+import Univers.TPlayer;
+
 public final class TNodeTerminal extends ANode {
 
 	public TNodeTerminal(String id, String desc, String descchoix) {
@@ -7,7 +11,7 @@ public final class TNodeTerminal extends ANode {
 	}
 
 	@Override
-	public void startNode() {
+	public void launchNode(TPlayer joueur, JFrame frame) {
 		System.out.println(this.getDescription());
 		try {
 			Thread.sleep(5000);

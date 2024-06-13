@@ -2,6 +2,10 @@ package Representation.node;
 
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
+import Univers.TPlayer;
+
 public final class TNodeDecision extends ANodeInner {
 	
 	public TNodeDecision(String id, String desc, String descchoix) {
@@ -16,12 +20,12 @@ public final class TNodeDecision extends ANodeInner {
 			System.out.println(this.getChoix()[i].getDescriptionChoix()+" Entrez : "+i);
 		}
 		int decisionprise = scanner.nextInt();
-		this.getChoix()[decisionprise].startNode();
+//		this.getChoix()[decisionprise].launchNode();
 		return null;
 	}
 
 	@Override
-	public void startNode() {
+	public void launchNode(TPlayer joueur, JFrame frame) {
 		// Afficher la description puis passer au choix : 
 		System.out.println(this.getDescription());
 		try {

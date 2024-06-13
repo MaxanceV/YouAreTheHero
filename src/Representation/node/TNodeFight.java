@@ -1,5 +1,9 @@
 package Representation.node;
 
+import javax.swing.JFrame;
+
+import Univers.TPlayer;
+
 public final class TNodeFight extends ANodeInner {
 
 	public TNodeFight(String id, String desc, String descchoix) {
@@ -14,7 +18,7 @@ public final class TNodeFight extends ANodeInner {
 	}
 
 	@Override
-	public void startNode() {
+	public void launchNode(TPlayer joueur, JFrame frame) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -18,7 +18,11 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		
 		start.setChoix(new ANode[]{milieu,fin});
 		milieu.setChoix(new ANode[] {fin});
-		start.startNode();
+	}
+
+	@Override
+	public ANodeInner getDefaultStartNode() {
+		return (ANodeInner) getNodeFromId(START_OF_GAME);
 	}
 		
 }

@@ -1,5 +1,9 @@
 package Representation.node;
 
+import javax.swing.JFrame;
+
+import Univers.TPlayer;
+
 public abstract class ANode {
 	private String id;
 	private String description;
@@ -11,7 +15,7 @@ public abstract class ANode {
 		this.descriptionchoix = descchoix;
 	}
 	
-	public abstract void startNode();
+	public abstract void launchNode(TPlayer joueur, JFrame frame);
 	
 	public String getId() {
 		return id;
