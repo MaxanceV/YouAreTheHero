@@ -12,12 +12,6 @@ public final class TNodeFight extends ANodeInner {
 	}
 
 	@Override
-	public ANode chooseNext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void launchNode(TPlayer joueur, JFrame frame) {
 		// TODO Auto-generated method stub
 		

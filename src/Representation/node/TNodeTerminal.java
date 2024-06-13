@@ -14,7 +14,7 @@ public final class TNodeTerminal extends ANode {
 	public void launchNode(TPlayer joueur, JFrame frame) {
 		System.out.println(this.getDescription());
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

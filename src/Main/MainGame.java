@@ -56,10 +56,10 @@ public class MainGame {
 	public static void playerCreated(TPlayer player) {
 		joueur = player;
 		joueur.setCurrentNode(nodeOfTheStory.getDefaultStartNode());
-		launchNode(joueur);
+		launchNode();
 		}
 
-	private static void launchNode(TPlayer joueur) {
+	private static void launchNode() {
 		ANode node = joueur.getCurrentNode();
 		if(null != node) {
 			node.launchNode(joueur, frame);
@@ -67,5 +67,10 @@ public class MainGame {
 			//TODO
 		}
 		
+	}
+
+	public static void nextNode(String id) {
+		joueur.setCurrentNode(nodeOfTheStory.getNodeFromId(id));
+		launchNode();
 	}
 }
