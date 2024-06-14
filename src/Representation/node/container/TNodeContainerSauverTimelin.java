@@ -7,15 +7,11 @@ import Representation.node.TNodeDecision;
 import Representation.node.TNodeFight;
 import Representation.node.TNodeTerminal;
 import Univers.TPersonnage;
+import Univers.Enum.ERace;
 import Univers.classe.AClasseGuerrier;
-import Univers.classe.IClasse;
 import Univers.classe.TClasseArchimage;
 import Univers.classe.TClasseObstacle;
-<<<<<<< HEAD
-import Univers.Enum.ERace;
-=======
-import Univers.race.ERace;
->>>>>>> f3ac1f36e08e63129900c3da15c0974e8a847bf3
+
 
 public class TNodeContainerSauverTimelin extends ANodeContainer {
 
