@@ -15,8 +15,8 @@ public abstract class ANodeInner extends ANode {
 		this.choix = choix;
 	}
 
-	public ANodeInner(String id, String desc, String descchoix) {
-		super(id, desc, descchoix);
+	public ANodeInner(String id, String desc, String descchoix, String image, String son) {
+		super(id, desc, descchoix, image, son);
 	}
 
 	public void chooseNext(String id) {

@@ -4,6 +4,7 @@ public enum ENodeType {
 	CHANCE,
 	DECISION,
 	FIGHT,
-	TERMINAL;
+	TERMINAL,
+	LEVELUP;
 
 }

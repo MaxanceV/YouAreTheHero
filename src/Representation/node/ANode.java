@@ -62,5 +62,4 @@ public abstract class ANode {
 	public void setSon(String son) {
 		this.son = son;
 	}
-
 }
