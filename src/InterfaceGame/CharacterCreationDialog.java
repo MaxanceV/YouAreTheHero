@@ -12,12 +12,12 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import Main.MainGame;
+import MainLaunch.MainGame;
 import Univers.TPlayer;
+import Univers.Enum.ERace;
 import Univers.classe.AClasseGuerrier;
 import Univers.classe.AClasseMage;
 import Univers.classe.IClasse;
-import Univers.race.ERace;
 
 public class CharacterCreationDialog extends JDialog {
     private static final long serialVersionUID = UniqueIdGenerator.generateUniqueIdLong();

@@ -2,7 +2,7 @@ package InterfaceGame;
 
 import javax.swing.*;
 
-import Main.MainGame;
+import MainLaunch.MainGame;
 
 public class MenuDialog extends JDialog {
 

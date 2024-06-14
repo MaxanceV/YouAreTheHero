@@ -1,7 +1,9 @@
-package Univers.race;
+package Univers.Enum;
 
-public enum ERace {
-	//ATTRIBUT DANS L'ORDRE : Nom,pv, ca par défaut
+import java.io.Serializable;
+
+public enum ERace implements Serializable{
+	//ATTRIBUT DANS L'ORDRE : Nom,pvMax, ca par défaut
 	HUMAIN("Humain",100,10),
 	NAIN("Nain",90,20),
 	GOBELIN("Gobelin",40,5),
@@ -21,7 +23,7 @@ public enum ERace {
 		return description;
 	}
 
-	public int getHitPoints() {
+	public int getHitPointsMax() {
 		return hitPoints;
 	}
 

@@ -1,10 +1,12 @@
 package Univers;
 
+import java.io.Serializable;
+
+import Univers.Enum.ERace;
 import Univers.classe.IClasse;
-import Univers.race.ERace;
 
-public class TPersonnage {
-
+public class TPersonnage implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private ERace race;
 	private IClasse classe;
 	private int pointVie;
@@ -17,7 +19,7 @@ public class TPersonnage {
 		this.classe = classe;
 		this.race = race;
 		this.classeArmure = race.getArmorClass();
-		this.pointVie = race.getHitPoints();
+		this.pointVie = race.getHitPointsMax();
 	}
 
 
@@ -70,4 +72,7 @@ public class TPersonnage {
 		this.nom = nom;
 	}
 	
+	public void levelUp() {
+		setClasse(getClasse().levelUp());
+	}
 }

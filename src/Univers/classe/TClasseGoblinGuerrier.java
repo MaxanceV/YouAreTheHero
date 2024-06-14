@@ -1,6 +1,9 @@
 package Univers.classe;
 
+import Univers.Enum.ECompetence;
+
 public final class TClasseGoblinGuerrier extends AClasseGuerrier{
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String getDescription() {
@@ -9,15 +12,9 @@ public final class TClasseGoblinGuerrier extends AClasseGuerrier{
 	}
 
 	@Override
-	public int attaque() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int defense() {
-		// TODO Auto-generated method stub
-		return 0;
+	public ECompetence[] Competences() {
+		ECompetence[] competence = {ECompetence.COUPEPEE, ECompetence.COUPDEPEEADEUXMAIN};
+		return competence;
 	}
 
 	@Override

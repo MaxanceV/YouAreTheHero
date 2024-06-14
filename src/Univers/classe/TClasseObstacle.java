@@ -1,6 +1,11 @@
 package Univers.classe;
 
-public final class TClasseObstacle implements IClasse {
+import java.io.Serializable;
+
+import Univers.Enum.ECompetence;
+
+public final class TClasseObstacle implements IClasse, Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String getDescription() {
@@ -9,15 +14,9 @@ public final class TClasseObstacle implements IClasse {
 	}
 
 	@Override
-	public int attaque() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int defense() {
-		// TODO Auto-generated method stub
-		return 0;
+	public ECompetence[] Competences() {
+		ECompetence[] competence = {ECompetence.OBSTACLE};
+		return competence;
 	}
 
 	@Override

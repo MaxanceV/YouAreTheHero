@@ -6,7 +6,9 @@ import Representation.node.ANode;
 import Representation.node.ANodeInner;
 import Representation.node.TNodeChance;
 import Representation.node.TNodeDecision;
+import Representation.node.TNodeFight;
 import Representation.node.TNodeTerminal;
+import Univers.TPersonnage;
 
 public abstract class ANodeContainer {
 	
@@ -26,26 +28,26 @@ public abstract class ANodeContainer {
 		return getNodesOfTheGame().get(id);
 	}
 	
-	protected TNodeChance addNodeChance(String id, String desc, String descchoix) {
-		TNodeChance node = new TNodeChance(id, desc, descchoix);
+	protected TNodeChance addNodeChance(String id, String desc, String descchoix, String image, String son) {
+		TNodeChance node = new TNodeChance(id, desc, descchoix, image, son);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 	
-	protected TNodeDecision addNodeDecision(String id, String desc, String descchoix) {
-		TNodeDecision node = new TNodeDecision(id, desc, descchoix);
+	protected TNodeDecision addNodeDecision(String id, String desc, String descchoix, String image, String son) {
+		TNodeDecision node = new TNodeDecision(id, desc, descchoix, image, son);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 	
-	protected TNodeDecision addNodeFight(String id, String desc, String descchoix) {
-		TNodeDecision node = new TNodeDecision(id, desc, descchoix);
+	protected TNodeFight addNodeFight(String id, String desc, String descchoix, String image, String son, TPersonnage ennemi) {
+		TNodeFight node = new TNodeFight(id, desc, descchoix, image, son, ennemi);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 	
-	protected TNodeTerminal addNodeTerminal(String id, String desc, String descchoix) {
-		TNodeTerminal node = new TNodeTerminal(id, desc, descchoix);
+	protected TNodeTerminal addNodeTerminal(String id, String desc, String descchoix, String image, String son) {
+		TNodeTerminal node = new TNodeTerminal(id, desc, descchoix, image, son);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}

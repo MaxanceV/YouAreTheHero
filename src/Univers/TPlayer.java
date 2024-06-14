@@ -1,29 +1,27 @@
 package Univers;
 
-import Representation.node.ANode;
+import Univers.Enum.ERace;
 import Univers.classe.IClasse;
-import Univers.race.ERace;
 
 public class TPlayer extends TPersonnage {
-	
-	private ANode currentNode;
-	private final String test = "test";
+	private static final long serialVersionUID = 1L;
+	private String currentNode;
 
 	public TPlayer(String nom, IClasse classe, ERace race) {
 		super(nom, classe, race);
 		this.setCurrentNode(null);
 	}
 	
-	public TPlayer(String nom, IClasse classe, ERace race, ANode node) {
+	public TPlayer(String nom, IClasse classe, ERace race, String node) {
 		super(nom, classe, race);
 		this.setCurrentNode(node);
 	}
 
-	public ANode getCurrentNode() {
+	public String getCurrentNode() {
 		return currentNode;
 	}
 
-	public void setCurrentNode(ANode currentNode) {
+	public void setCurrentNode(String currentNode) {
 		this.currentNode = currentNode;
 	}
 
