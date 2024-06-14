@@ -6,8 +6,8 @@ import Univers.TPlayer;
 
 public final class TNodeChance extends ANodeInner {
 	
-	public TNodeChance(String id, String desc, String descchoix) {
-		super(id, desc,descchoix);
+	public TNodeChance(String id, String desc, String descchoix, String image, String son) {
+		super(id, desc, descchoix, image, son);
 	}
 
 	@Override
