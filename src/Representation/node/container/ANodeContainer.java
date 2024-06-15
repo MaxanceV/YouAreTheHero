@@ -52,4 +52,9 @@ public abstract class ANodeContainer {
 		return node;
 	}
 
+	protected TNodeLevelUp addNodeLevelUp(String id, String desc, String descchoix, String image, String son) {
+		TNodeLevelUp node = new TNodeLevelUp(id, desc, descchoix, image, son);
+		nodesOfTheGame.put(id, node);
+		return node;
+	}
 }
