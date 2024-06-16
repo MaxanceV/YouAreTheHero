@@ -1,12 +1,14 @@
 package Representation.node.container;
 
+import java.security.KeyStore.Entry;
+
 import Representation.node.ANode;
 import Representation.node.ANodeInner;
 import Representation.node.TNodeChance;
 import Representation.node.TNodeDecision;
 import Representation.node.TNodeFight;
-import Representation.node.TNodeTerminal;
 import Representation.node.TNodeLevelUp;
+import Representation.node.TNodeTerminal;
 import Univers.TPersonnage;
 import Univers.Enum.ERace;
 import Univers.classe.AClasseGuerrier;
@@ -96,14 +98,16 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		TNodeTerminal defaitecombat = addNodeTerminal(DEFAITE_COMBAT,"Une affreuse sensation de vide et d'engourdi envahit votre corps alors que vous encaissez cet ultime coup. Votre souffle\"\r\n"
 				+ "				+ \"est coupé et alors que vous tentez encore de comprendre ce qui vous arrive, vous tombez à genoux. Un dernier soupir fuit votre corps et vos yeux se ferment..."
 				,null,"","");
-		TNodeDecision victoirecombat1 = addNodeDecision(VICTOIRE_COMBAT_1,"Gagner ce combat vous a offert beaucoup d'expériences sur vos techniques de combat. Vous sentez un souffle d'inspiration"
+		TNodeLevelUp monteerang = addNodeLevelUp(MONTEE_RANG,"Gagner ce combat vous a offert beaucoup d'expériences sur vos techniques de combat. Vous sentez un souffle d'inspiration"
 				+ "qui envahit votre corps. C'est le moment de monter de niveau !",null,"","");
 		// Vous passez de "classe actuelle" à "classe évoluée" ! Félicitations. 
-		TNodeLevelUp monteerang = addNodeLevelUp(MONTEE_RANG,"Le gobelin, vaincu, s'effondre devant vous. Quel beau combat ! Tandis que vous reprenez votre souffle et appréciez la nouvelle force "
-				+ "qui réside en vous, le paysan que vous venez de sauver s'approche de vous : 'Oh merci ! Je ne sais pas ce que j'aurai fait sans vous, milles merci aventurier ! Si jamais vous "
-				+ "voulez vous mesurer au reste de leur tribu, je vous conseille d'aller vers l'est. C'est là que se trouve leur repaire. Bonne chance, et merci encore !'. Fier d'avoir sauvé un "
+		TNodeDecision victoirecombat1 = addNodeDecision(VICTOIRE_COMBAT_1,"Le gobelin, vaincu, s'effondre devant vous. Quel beau combat ! Tandis que vous reprenez votre souffle et appréciez la nouvelle "
+				+ " force qui réside en vous, le paysan que vous venez de sauver s'approche de vous : 'Oh merci ! Je ne sais pas ce que j'aurai fait sans vous, milles merci aventurier ! Si jamais vous"
+				+ "voulez vous mesurer au reste de leur tribu, je vous conseille d'aller vers l'est. C'est là que se trouve leur repaire. Bonne chance, et merci encore !'. Fier d'avoir sauvé un"
 				+ "si brave homme, vous regarder la direction qu'il pointe. Un sentier semble sillonner parmi les plaines jusqu'à une petit forêt, assez opaque vue d'ici. Voilà votre prochain objectif."
 				,null,"","");
+		
+		
 		TNodeDecision repairegobelins = addNodeDecision(REPAIRE_GOBELINS,"Après avoir suivi le sentier un moment, vous entrez dans la forêt. L'air est lourd et les oiseaux ne chantent pas. Un léger "
 				+ "frisson vous parcourt, mais vous n'êtes pas allé aussi loin pour vous arrêter maintenant. Vous chassez ces angoisses et resserez votre poigne sur votre arme. Une odeur nauséabonde "
 				+ "très semblable à celle du gobelin que vous avez affronté tout à l'heure vous emplit les narines. Le sentier fait un tournant et vous apercevez soudain, droit devant vous, "
@@ -161,13 +165,13 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		diredragon.setChoix(new ANode[]{combat3});
 		combat2.setChoix(new ANode[]{victoire2,defaitecombat});
 		combat3.setChoix(new ANode[]{victoire3,defaitecombat});
-
+		
 		for(java.util.Map.Entry<String, ANode> entry : getNodesOfTheGame().entrySet()) {
 			String key = entry.getKey();
 		    ANode value = entry.getValue();
 		    if(value instanceof ANodeInner) {
 		    	if(((ANodeInner) value).getChoix() == null) {
-			    	System.out.println("WARNING : le noeud " + key + " n'a pas de suite");	
+			    	System.out.println("WARNING : le noeuds " + key + " n'a pas de suite");	
 		    	}
 		    }
 		}
