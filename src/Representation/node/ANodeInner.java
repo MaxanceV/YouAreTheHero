@@ -1,7 +1,5 @@
 package Representation.node;
 
-import MainLaunch.MainGame;
-
 public abstract class ANodeInner extends ANode {
 	// Dispose d'une liste des ID des prochains noeuds. Les enfants d'InnerNode, decision et chance iront chercher
 	// la description des choix dans le tableau des Nodes pour les proposer au joueur. 
@@ -15,11 +13,7 @@ public abstract class ANodeInner extends ANode {
 		this.choix = choix;
 	}
 
-	public ANodeInner(String id, String desc, String descchoix, String image, String son) {
-		super(id, desc, descchoix, image, son);
-	}
-
-	public void chooseNext(String id) {
-		MainGame.nextNode(id);
+	public ANodeInner(String id, String desc, String descchoix) {
+		super(id, desc, descchoix);
 	}
 }

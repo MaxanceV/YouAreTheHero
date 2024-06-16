@@ -7,11 +7,11 @@ public final class TClasseChampion extends AClasseGuerrier {
 
 	@Override
 	public String getDescription() {
-		return "Je suis un champion";
+		return "un champion";
 	}
 
 	@Override
-	public ECompetence[] Competences() {
+	public ECompetence[] getCompetences() {
 		ECompetence[] competence = {ECompetence.COUPEPEE, ECompetence.COUPDEPEEADEUXMAIN};
 		return competence;
 	}

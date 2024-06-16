@@ -3,11 +3,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import InterfaceGame.CharacterCreationDialog;
-import InterfaceGame.LoadSaveDialog;
-import InterfaceGame.MenuDialog;
-import InterfaceGame.NodeDecisionDialog;
-import InterfaceGame.OptionsDialog;
+import InterfaceGame.DialogCharacterCreation;
+import InterfaceGame.DialogLoadSave;
+import InterfaceGame.DialogMainMenu;
+import InterfaceGame.DialogNodeDecision;
+import InterfaceGame.DialogOptions;
 import Representation.node.ANode;
 import Representation.node.TNodeChance;
 import Representation.node.TNodeDecision;
@@ -26,7 +26,6 @@ public class MainGame {
 	private static ANodeContainer nodeOfTheStory;
 
     public static void main(String[] args) {
-    	
     	createDefaultFrame();
     	loadStory();
     	OpenMainMenu(); 	
@@ -46,19 +45,25 @@ public class MainGame {
 
 	public static void OpenMainMenu() {
         SwingUtilities.invokeLater(() -> {
-            new MenuDialog(frame).setVisible(true);
+            new DialogMainMenu(frame).setVisible(true);
         });
 	}
 
-	public static void createCharacter() {
+	public static void createCharacter(JDialog jDialog) {
+		if(null != jDialog) {
+			jDialog.dispose();
+		}
 		SwingUtilities.invokeLater(() -> {
-	        new CharacterCreationDialog(frame).setVisible(true);
+	        new DialogCharacterCreation(frame).setVisible(true);
 	   });
 	}
 
-	public static void loadCharacter() {
+	public static void loadCharacter(JDialog jDialog) {
+		if(null != jDialog) {
+			jDialog.dispose();
+		}
     	SwingUtilities.invokeLater(() -> {
-	        new LoadSaveDialog(frame).setVisible(true);
+	        new DialogLoadSave(frame).setVisible(true);
 	   });
 	}
 	
@@ -80,10 +85,7 @@ public class MainGame {
 	}
 
 	private static void launchNode() {
-		System.out.println(joueur.getCurrentNode());
 		ANode node = nodeOfTheStory.getNodeFromId(joueur.getCurrentNode());
-		System.out.println(nodeOfTheStory);
-		System.out.println(node);
 		if(null != node) {
 			node.launchNode(joueur, frame);
 		} else {
@@ -92,29 +94,39 @@ public class MainGame {
 		
 	}
 
-	public static void nextNode(String id) {
+	public static void nextNode(JDialog jDialog, String id) {
+		if(null != jDialog) {
+			jDialog.dispose();
+		}
 		joueur.setCurrentNode(id);
 		SaveManager.savePlayer(joueur);
 		launchNode();
 	}
 	
 	public static void endOfGameAndQuit() {
-		deleteSaveOfPlayer();
-		quit();
+		deleteSaveOfPlayer(null);
+		quit(null);
 	}
 	
 	public static void startOptionsDialog(JDialog jDialog) {
 		SwingUtilities.invokeLater(() -> {
-	        new OptionsDialog(frame, jDialog).setVisible(true);
+	        new DialogOptions(frame, jDialog).setVisible(true);
 	   });
 	}
 
-	private static void deleteSaveOfPlayer() {
-		// TODO Auto-generated method stub
+	private static void deleteSaveOfPlayer(TPlayer player) {
+		if (null != player) {
+			SaveManager.deleteSaveOfPlayer(player.getNom());
+		} else {
+			SaveManager.deleteSaveOfPlayer(joueur.getNom());
+		}
 		
 	}
 
-	public static void quit() {
+	public static void quit(JDialog jDialog) {
+		if(null != jDialog) {
+			jDialog.dispose();
+		}
 		frame.dispose();
 		System.exit(0);
 	}

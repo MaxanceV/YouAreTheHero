@@ -7,46 +7,55 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.border.TitledBorder;
 
 import MainLaunch.MainGame;
-import Representation.node.ANodeInner;
 import Representation.node.TNodeTerminal;
 import Univers.TPlayer;
 
-public class NodeTerminalDialog extends JDialog {
+public class DialogNodeTerminal extends JDialog {
     private static final long serialVersionUID = 1L;
 
-    public NodeTerminalDialog(JFrame parent, TPlayer joueur, TNodeTerminal tNodeTerminal) {
+    public DialogNodeTerminal(JFrame parent, TPlayer joueur, TNodeTerminal tNodeTerminal) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
-        setSize(800, 600);
-        setLocationRelativeTo(parent);
-        setLayout(new BorderLayout());
 
         // Déterminer l'apparence en fonction de la description
+        String id = tNodeTerminal.getId();
         String description = tNodeTerminal.getDescription();
-        JLabel descriptionLabel = new JLabel(description, JLabel.CENTER);
-        descriptionLabel.setFont(new Font("Serif", Font.BOLD, 48));
 
-        if ("Game Over".equals(description)) {
+        JLabel mainLabel = new JLabel("", JLabel.CENTER);
+        mainLabel.setFont(new Font("Serif", Font.BOLD, 48));
+
+        if (id.contains("defaite")) {
+            mainLabel.setText("DEFAITE");
+            mainLabel.setForeground(Color.RED);
             getContentPane().setBackground(Color.BLACK);
-            descriptionLabel.setForeground(Color.RED);
-        } else if ("Victoire".equals(description)) {
+        } else if (id.contains("victoire")) {
+            mainLabel.setText("VICTOIRE");
+            mainLabel.setForeground(Color.YELLOW);
             getContentPane().setBackground(Color.WHITE);
-            descriptionLabel.setForeground(Color.YELLOW);
         } else {
-            // Définir des valeurs par défaut si nécessaire
+            mainLabel.setText("FIN");
+            mainLabel.setForeground(Color.BLACK);
             getContentPane().setBackground(Color.LIGHT_GRAY);
-            descriptionLabel.setForeground(Color.BLACK);
         }
 
-        // Ajouter la description au centre
-        add(descriptionLabel, BorderLayout.CENTER);
+        // Ajouter le mainLabel en haut
+        JPanel mainLabelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        mainLabelPanel.add(mainLabel);
+        mainLabelPanel.setOpaque(false);
+
+        // Panel pour la description du nœud
+        JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        descriptionPanel.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), "Description"));
+        JLabel descriptionLabel = new JLabel("<html>" + InterfaceCreatorTool.stringDescriptionNodeFormat(description) + "</html>");
+        descriptionPanel.add(descriptionLabel);
 
         // Panel pour les boutons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -56,7 +65,7 @@ public class NodeTerminalDialog extends JDialog {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	MainGame.OpenMainMenu();
+                MainGame.OpenMainMenu();
                 dispose();
             }
         });
@@ -65,7 +74,7 @@ public class NodeTerminalDialog extends JDialog {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGame.quit();
+                MainGame.quit(getDialog());
                 dispose();
             }
         });
@@ -73,8 +82,18 @@ public class NodeTerminalDialog extends JDialog {
         buttonPanel.add(mainMenuButton);
         buttonPanel.add(quitButton);
 
-        // Ajouter le panel des boutons en bas du dialog
+        // Ajouter les panels au dialog
+        setLayout(new BorderLayout());
+        add(mainLabelPanel, BorderLayout.NORTH);
+        add(descriptionPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+
+        pack();
+        setLocationRelativeTo(parent);
+    }
+
+    protected JDialog getDialog() {
+        return this;
     }
 }
 

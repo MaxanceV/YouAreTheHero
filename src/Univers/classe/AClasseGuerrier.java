@@ -9,7 +9,7 @@ public class AClasseGuerrier implements IClasse, Serializable {
 
 	@Override
 	public String getDescription() {
-		return "Je suis un guerrier";
+		return "un guerrier";
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class AClasseGuerrier implements IClasse, Serializable {
 	}
 
 	@Override
-	public ECompetence[] Competences() {
+	public ECompetence[] getCompetences() {
 		ECompetence[] competence = {ECompetence.COUPEPEE, ECompetence.COUPDEPEEADEUXMAIN};
 		return competence;
 	}

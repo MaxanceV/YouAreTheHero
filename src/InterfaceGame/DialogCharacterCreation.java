@@ -19,11 +19,11 @@ import Univers.classe.AClasseGuerrier;
 import Univers.classe.AClasseMage;
 import Univers.classe.IClasse;
 
-public class CharacterCreationDialog extends JDialog {
-    private static final long serialVersionUID = UniqueIdGenerator.generateUniqueIdLong();
+public class DialogCharacterCreation extends JDialog {
+    private static final long serialVersionUID = 1l;
     private TPlayer joueur;
 
-    public CharacterCreationDialog(JFrame parent) {
+    public DialogCharacterCreation(JFrame parent) {
         super(parent, "Création de Personnage", true);
         setSize(300, 200);
         setLayout(new GridLayout(5, 1));

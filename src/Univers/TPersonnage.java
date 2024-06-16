@@ -51,7 +51,22 @@ public class TPersonnage implements Serializable {
 	public void setPointVie(int pointVie) {
 		this.pointVie = pointVie;
 	}
-
+	
+	public void pertPointVie(int pointViePerdu) {
+		if(getPointVie() - pointViePerdu < 0 ) {
+			setPointVie(0);	
+		} else {
+			setPointVie(pointVie - pointViePerdu);
+		}
+	}
+	
+	public void gagnePointVie(int pointVieGagner) {
+		if(getPointVie() + pointVieGagner > race.getHitPointsMax()) {
+			setPointVie(race.getHitPointsMax());
+		} else {
+			setPointVie(pointVie + pointVieGagner);
+		}
+	}
 
 	public int getClasseArmur() {
 		return classeArmure;
@@ -73,6 +88,9 @@ public class TPersonnage implements Serializable {
 	}
 	
 	public void levelUp() {
-		setClasse(getClasse().levelUp());
+		IClasse classeTmp = getClasse().levelUp();
+		if(null != classeTmp) {
+			setClasse(classeTmp);
+		}
 	}
 }

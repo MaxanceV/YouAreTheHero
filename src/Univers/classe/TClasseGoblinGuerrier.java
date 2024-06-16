@@ -7,12 +7,11 @@ public final class TClasseGoblinGuerrier extends AClasseGuerrier{
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return "un gobelin guerrier";
 	}
 
 	@Override
-	public ECompetence[] Competences() {
+	public ECompetence[] getCompetences() {
 		ECompetence[] competence = {ECompetence.COUPEPEE, ECompetence.COUPDEPEEADEUXMAIN};
 		return competence;
 	}

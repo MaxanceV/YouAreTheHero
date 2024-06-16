@@ -2,7 +2,6 @@ package InterfaceGame;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,17 +16,15 @@ import javax.swing.border.TitledBorder;
 
 import MainLaunch.MainGame;
 import Representation.node.ANode;
-import Representation.node.ANodeInner;
+import Representation.node.TNodeDecision;
 import Univers.TPlayer;
 
-public class NodeDecisionDialog extends JDialog {
+public class DialogNodeDecision extends JDialog {
     private static final long serialVersionUID = 1L;
 
-    public NodeDecisionDialog(JFrame parent, TPlayer joueur, ANodeInner node) {
+    public DialogNodeDecision(JFrame parent, TPlayer joueur, TNodeDecision node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
-        setSize(800, 600);
-        setLocationRelativeTo(parent);
-        setLayout(new BorderLayout());
+
 
         // Chargement des images
         ImageIcon settingsIcon = new ImageIcon(getClass().getClassLoader().getResource(InterfaceCreatorTool.SETTING_ICON));
@@ -54,7 +51,7 @@ public class NodeDecisionDialog extends JDialog {
         settingsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGame.startOptionsDialog(NodeDecisionDialog.this);
+                MainGame.startOptionsDialog(DialogNodeDecision.this);
             }
         });
         settingsPanel.add(settingsButton);
@@ -77,8 +74,7 @@ public class NodeDecisionDialog extends JDialog {
             choiceButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    MainGame.nextNode(choice.getId());
-                    dispose();
+                    MainGame.nextNode(getDialog(), choice.getId());
                 }
             });
             choicesPanel.add(choiceButton);
@@ -98,5 +94,13 @@ public class NodeDecisionDialog extends JDialog {
         // Ajouter le bottomPanel au sud du mainPanel
         add(mainPanel, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
+        
+        pack();
+        setLocationRelativeTo(parent);
+        setLayout(new BorderLayout());
     }
+    
+	protected JDialog getDialog() {
+		return this;
+	}
 }

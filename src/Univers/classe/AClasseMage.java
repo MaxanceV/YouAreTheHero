@@ -9,11 +9,11 @@ public class AClasseMage implements IClasse, Serializable {
 
 	@Override
 	public String getDescription() {
-		return "Je suis un mage";
+		return "un mage";
 	}
 
 	@Override
-	public ECompetence[] Competences() {
+	public ECompetence[] getCompetences() {
 		ECompetence[] competence = {ECompetence.STALACTITE, ECompetence.POTIONSOIN};
 		return competence;
 	}

@@ -7,11 +7,11 @@ public final class TClasseArchimage extends AClasseMage {
 
 	@Override
 	public String getDescription() {
-		return "Je suis un archimage";
+		return "un archimage";
 	}
 
 	@Override
-	public ECompetence[] Competences() {
+	public ECompetence[] getCompetences() {
 		ECompetence[] competence = {ECompetence.BOULEDEFEU, ECompetence.STALACTITE, ECompetence.POTIONSOIN};
 		return competence;
 	}

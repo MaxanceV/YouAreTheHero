@@ -47,5 +47,18 @@ public class SaveManager {
         }
         return player;
     }
+	
+    public static void deleteSaveOfPlayer(String playerName) {
+        File saveFile = new File("saves/" + playerName + "_save.ser");
+        if (saveFile.exists()) {
+            if (saveFile.delete()) {
+                System.out.println("Save file deleted for player: " + playerName);
+            } else {
+                System.out.println("Failed to delete save file for player: " + playerName);
+            }
+        } else {
+            System.out.println("Save file not found for player: " + playerName);
+        }
+    }
 }
 

@@ -9,12 +9,11 @@ public final class TClasseObstacle implements IClasse, Serializable {
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return "un obstacle";
 	}
 
 	@Override
-	public ECompetence[] Competences() {
+	public ECompetence[] getCompetences() {
 		ECompetence[] competence = {ECompetence.OBSTACLE};
 		return competence;
 	}

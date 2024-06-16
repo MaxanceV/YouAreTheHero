@@ -11,21 +11,22 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import MainLaunch.MainGame;
+import MainLaunch.SaveManager;
 
-public class LoadSaveDialog extends JDialog {
+public class DialogLoadSave extends JDialog {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> saveBox;
     private JButton validateButton;
+    private JButton deleteButton;
     private String selectedSave;
 
-    public LoadSaveDialog(JFrame parent) {
+    public DialogLoadSave(JFrame parent) {
         super(parent, "Charger une Sauvegarde", true);  // true pour rendre le dialogue modal
-        setSize(400, 200);
-        setLocationRelativeTo(parent);
-        setLayout(new BorderLayout());
+
 
         // Panel pour sélectionner une sauvegarde
         JPanel selectPanel = new JPanel(new FlowLayout());
@@ -34,7 +35,9 @@ public class LoadSaveDialog extends JDialog {
         saveBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                validateButton.setEnabled(saveBox.getSelectedIndex() != -1);
+                boolean hasSelection = saveBox.getSelectedIndex() != -1;
+                validateButton.setEnabled(hasSelection);
+                deleteButton.setEnabled(hasSelection);
             }
         });
 
@@ -47,9 +50,8 @@ public class LoadSaveDialog extends JDialog {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Logique pour retourner au menu principal
+                MainGame.OpenMainMenu();
                 dispose();
-                // Par exemple : MainGame.returnToMainMenu();
             }
         });
 
@@ -60,18 +62,47 @@ public class LoadSaveDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 selectedSave = (String) saveBox.getSelectedItem();
                 if (selectedSave != null) {
-                	MainGame.playerLoader(selectedSave);
+                    MainGame.playerLoader(selectedSave);
                     dispose();
+                }
+            }
+        });
+
+        deleteButton = new JButton("Supprimer la sauvegarde");
+        deleteButton.setEnabled(false);  // Désactivé jusqu'à ce qu'une sauvegarde soit sélectionnée
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedSave = (String) saveBox.getSelectedItem();
+                if (selectedSave != null) {
+                    int confirmation = JOptionPane.showConfirmDialog(
+                        DialogLoadSave.this,
+                        "Êtes-vous sûr de vouloir supprimer la sauvegarde " + selectedSave + " ?",
+                        "Confirmation de suppression",
+                        JOptionPane.YES_NO_OPTION
+                    );
+                    if (confirmation == JOptionPane.YES_OPTION) {
+                        SaveManager.deleteSaveOfPlayer(selectedSave);
+                        // Mettre à jour la liste des sauvegardes
+                        saveBox.setModel(new javax.swing.DefaultComboBoxModel<>(getSaveFiles()));
+                        validateButton.setEnabled(false);
+                        deleteButton.setEnabled(false);
+                    }
                 }
             }
         });
 
         buttonPanel.add(mainMenuButton);
         buttonPanel.add(validateButton);
+        buttonPanel.add(deleteButton);
 
         // Ajouter les panels au dialog
         add(selectPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+        
+        pack();
+        setLocationRelativeTo(parent);
+        setLayout(new BorderLayout());
     }
 
     private String[] getSaveFiles() {

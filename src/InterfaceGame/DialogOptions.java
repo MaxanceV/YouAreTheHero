@@ -12,14 +12,11 @@ import javax.swing.JPanel;
 
 import MainLaunch.MainGame;
 
-public class OptionsDialog extends JDialog {
+public class DialogOptions extends JDialog {
     private static final long serialVersionUID = 1L;
 
-    public OptionsDialog(JFrame parent, JDialog jDialog) {
+    public DialogOptions(JFrame parent, JDialog jDialog) {
         super(parent, "Options", true);  // true pour rendre le dialogue modal
-        setSize(400, 200);
-        setLocationRelativeTo(parent);
-        setLayout(new BorderLayout());
 
         // Panel pour les boutons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -39,7 +36,7 @@ public class OptionsDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
             	jDialog.dispose();
-                MainGame.quit();
+                MainGame.quit(getDialog());
             }
         });
 
@@ -57,5 +54,13 @@ public class OptionsDialog extends JDialog {
 
         // Ajouter le panel des boutons au centre du dialog
         add(buttonPanel, BorderLayout.CENTER);
+        
+        pack();
+        setLocationRelativeTo(parent);
+        setLayout(new BorderLayout());
     }
+    
+    protected JDialog getDialog() {
+		return this;
+	}
 }

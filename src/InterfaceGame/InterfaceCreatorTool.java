@@ -31,7 +31,7 @@ public class InterfaceCreatorTool {
 	
 	public static String stringDescriptionNodeFormat(String string) {
 		string.replace("\n", "<br>");
-		string = insertLineBreaks(string, 100);
+		string = insertLineBreaks(string, 130);
 		return string;
 	}
 	
