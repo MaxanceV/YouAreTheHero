@@ -77,12 +77,13 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 				+ "parlez-vous elfique ?","Aller parler aux elfes","","");
 		TNodeDecision elfesrate = addNodeDecision(ELFES_RATE,"Hum...vous souriez, embarrassé, en vous rendant compte que vous ne parlez pas le moindre mot d'elfique. Les elfes ont l'air tout aussi "
 				+ "déconcertés que vous et ne disent plus un mot lorsque vous vous levez et quittez la taverne. Penaud, vous décidez qu'il est temps de sortir de la ville et partir "
-				+ "à l'assaut des gobelins. ",null,"","");
+				+ "à l'assaut des gobelins. ","Vous ne parlez pas elfique.","","");
 		TNodeDecision elfesreussi = addNodeDecision(ELFES_REUSSI,"Vous réfléchissez un moment, puis votre mémoire vous revient. Vous lui répondez que vous allez très bien et leur demandez à leur tour "
 				+ "comment ils se portent. Vous dirigez alors la discussion sur le dragon dont vous avez entendu parler et les elfes vous disent la chose suivante : 'Ce serait très étonnant que les "
 				+ "gobelins aient vraiment un dragon à leur service. Peu de choses pourraient obliger une créature si puissante à servir des gobelins. Et les dragons ne détruisent pas simplement "
 				+ "des maisons, ni même des villages. Leur mesure de la destruction est plutôt de l'ordre des villes et capitales. Non, peu importe ce que ces gobelins prétendent, ils n'ont "
-				+ "surement pas de dragon à leurs côtés.'. Ravi d'avoir appris quelque chose d'utile, vous décidez qu'il est temps de sortir de la ville et partir à l'assaut des gobelins.",null,"","");
+				+ "surement pas de dragon à leurs côtés.'. Ravi d'avoir appris quelque chose d'utile, vous décidez qu'il est temps de sortir de la ville et partir à l'assaut des gobelins.","Vous parlez"
+				+ " elfique","","");
 		TNodeDecision sortieville = addNodeDecision(SORTIE_VILLE,"Une légère brise souffle agréablement en dehors de la ville. Le soleil est toujours haut dans le ciel et éclaire les grandes plaines."
 				+ "La parfaite platitude de ces grandes étendues vertes est rendue imparfaite par plusieurs bosquets, allant du simple couple de chênes à une petite forêt. Mais votre contemplation est"
 				+ "vite interrompue par des cris stridents. Plus loin sur la route principale, une petite créature verte pourchasse un paysan et le pique en ricanant à l'aide d'un pieu "
@@ -99,13 +100,13 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 				+ "				+ \"est coupé et alors que vous tentez encore de comprendre ce qui vous arrive, vous tombez à genoux. Un dernier soupir fuit votre corps et vos yeux se ferment..."
 				,null,"","");
 		TNodeLevelUp monteerang = addNodeLevelUp(MONTEE_RANG,"Gagner ce combat vous a offert beaucoup d'expériences sur vos techniques de combat. Vous sentez un souffle d'inspiration"
-				+ "qui envahit votre corps. C'est le moment de monter de niveau !",null,"","");
+				+ "qui envahit votre corps. C'est le moment de monter de niveau !","Monter de niveau","","");
 		// Vous passez de "classe actuelle" à "classe évoluée" ! Félicitations. 
 		TNodeDecision victoirecombat1 = addNodeDecision(VICTOIRE_COMBAT_1,"Le gobelin, vaincu, s'effondre devant vous. Quel beau combat ! Tandis que vous reprenez votre souffle et appréciez la nouvelle "
 				+ " force qui réside en vous, le paysan que vous venez de sauver s'approche de vous : 'Oh merci ! Je ne sais pas ce que j'aurai fait sans vous, milles merci aventurier ! Si jamais vous"
 				+ "voulez vous mesurer au reste de leur tribu, je vous conseille d'aller vers l'est. C'est là que se trouve leur repaire. Bonne chance, et merci encore !'. Fier d'avoir sauvé un"
 				+ "si brave homme, vous regarder la direction qu'il pointe. Un sentier semble sillonner parmi les plaines jusqu'à une petit forêt, assez opaque vue d'ici. Voilà votre prochain objectif."
-				,null,"","");
+				,"Continuer","","");
 		
 		
 		TNodeDecision repairegobelins = addNodeDecision(REPAIRE_GOBELINS,"Après avoir suivi le sentier un moment, vous entrez dans la forêt. L'air est lourd et les oiseaux ne chantent pas. Un léger "
@@ -132,20 +133,20 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		TNodeFight    combat3 = addNodeFight(COMBAT_2_DRAGON,"Vous continuez dans la grotte mais n'entendez ni rugissement ni ne subissez de brûlure au 3ème degré. Où est donc ce fameux dragon ? "
 				+ "Mais en pensant ces mots, vous voyez une forme sombre se dessiner au fond de la grotte. Aucun mouvement, et pourtant c'est bien les dimensions d'un dragon. Vous voyez même un oeil,"
 				+ "des écailles, des griffes...mais vous reconnaissez bien vite que ce n'est qu'une couche de peinture appliquée sur de gros sacs de jute. Vous soupirez de soulagement et vous "
-				+ "apprêtez à massacrer ces pauvres sacs.",null,"","",DragonFarine);
+				+ "apprêtez à massacrer ces pauvres sacs.","Affronter le dragon","","",DragonFarine);
 		
 		TPersonnage Chaman = new TPersonnage("Toutankharton le chaman", new TClasseArchimage(), ERace.GOBELIN);
 		DragonFarine.setPointVie(25);
 		DragonFarine.setClasseArmur(14);
 		TNodeFight 	  combat2 = addNodeFight(COMBAT_3_CHAMAN,"Vous voyez des tatouages tribaux sur le visage du chaman qui semblent s'illuminer, comme traversés par une puissance magique. Ses yeux, "
-				+ "au contraire, sont imperturbablement fixés sur vous. Il s'arrête, lève son bâton, et le combat commence. ",null,"","", Chaman);
+				+ "au contraire, sont imperturbablement fixés sur vous. Il s'arrête, lève son bâton, et le combat commence. ","Affronter le chaman","","", Chaman);
 		
 		TNodeTerminal victoire2 = addNodeTerminal(VICTOIRE_COMBAT_2,"Vous découpez rapidement ce monstre fantaisiste et sortez de la grotte, triomphant. Les gobelins vous regardent avec horreur, "
 				+ "terrifiés par votre puissance. Avant même que vous ne commenciez à parler, tous détalent sans demander leur reste. Vous contemplez la scène et une immense fierté vous envahit. "
-				+ "Vous êtes le vainqueur du dragon ! Vous êtes le sauveur de Timelin ! Et mieux que tout ça, vous êtes un vrai héros.",null,"","");
+				+ "Vous êtes le vainqueur du dragon ! Vous êtes le sauveur de Timelin ! Et mieux que tout ça, vous êtes un vrai héros.","Continuer","","");
 		TNodeTerminal victoire3 = addNodeTerminal(VICTOIRE_COMBAT_3,"Après un combat acharné contre ce gobelin chaman, vous finissez par triompher. Les gobelins vous regardent avec horreur, "
 				+ "terrifiés par votre puissance. Avant même que vous ne commenciez à parler, tous détalent sans demander leur reste. Vous contemplez la scène et une immense fierté vous envahit."
-				+ "Vous êtes le vainqueur du dragon ! Vous êtes le sauveur de Timelin ! Et mieux que tout ça, vous êtes un vrai héros.",null,"","");
+				+ "Vous êtes le vainqueur du dragon ! Vous êtes le sauveur de Timelin ! Et mieux que tout ça, vous êtes un vrai héros.","Continuer","","");
 		
 		intro.setChoix(new ANode[]{taverne,sortieville});
 		taverne.setChoix(new ANode[]{chasseur,elfes});
