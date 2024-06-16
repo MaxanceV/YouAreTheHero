@@ -11,8 +11,8 @@ import Univers.TPlayer;
 
 public final class TNodeDecision extends ANodeInner {
 	
-	public TNodeDecision(String id, String desc, String descchoix, String image, String son) {
-		super(id, desc, descchoix, image, son);
+	public TNodeDecision(String id, String desc, String descchoix) {
+		super(id, desc, descchoix);
 	}
 
 //	@Override
