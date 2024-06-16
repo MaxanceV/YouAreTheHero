@@ -17,3 +17,4 @@ public abstract class ANodeInner extends ANode {
 		super(id, desc, descchoix);
 	}
 }
+

@@ -42,4 +42,6 @@ public abstract class ANode {
 	}
 	
 	public abstract ENodeType getNodeType();
+
 }
+
