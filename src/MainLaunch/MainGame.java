@@ -3,6 +3,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import InterfaceGame.CreatorToolDialog;
 import InterfaceGame.DialogCharacterCreation;
 import InterfaceGame.DialogLoadSave;
 import InterfaceGame.DialogMainMenu;
@@ -44,6 +45,7 @@ public class MainGame {
 	}
 
 	public static void OpenMainMenu() {
+		CreatorToolDialog.stopSound();
         SwingUtilities.invokeLater(() -> {
             new DialogMainMenu(frame).setVisible(true);
         });
@@ -87,7 +89,9 @@ public class MainGame {
 	private static void launchNode() {
 		ANode node = nodeOfTheStory.getNodeFromId(joueur.getCurrentNode());
 		if(null != node) {
+			CreatorToolDialog.playSound("sons/" + node.getId() + ".wav");
 			node.launchNode(joueur, frame);
+			
 		} else {
 			//TODO
 		}
@@ -100,10 +104,12 @@ public class MainGame {
 		}
 		joueur.setCurrentNode(id);
 		SaveManager.savePlayer(joueur);
+		CreatorToolDialog.stopSound();
 		launchNode();
 	}
 	
 	public static void endOfGameAndQuit() {
+		CreatorToolDialog.stopSound();
 		deleteSaveOfPlayer(null);
 		quit(null);
 	}

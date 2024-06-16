@@ -4,7 +4,15 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +26,7 @@ public class CreatorToolDialog {
 	final static String DEFAULT_DECORE_IMAGE = "images/decore.png";
 	private static final int MAX_IMAGE_WIDTH = 800;  // Change to your desired max width
 	private static final int MAX_IMAGE_HEIGHT = 400; // Change to your desired max height
+	private static Clip currentClip;
 	
 	public static String insertLineBreaks(String input, int lineLength) {
         StringBuilder result = new StringBuilder();
@@ -107,6 +116,31 @@ public class CreatorToolDialog {
         });
         settingsPanel.add(settingsButton);
         return settingsPanel;
+    }
+	
+	public static void playSound(String soundFile) {
+        stopSound(); // Stop any previously playing sound
+
+        try {
+            URL soundURL = CreatorToolDialog.class.getClassLoader().getResource(soundFile);
+            if (soundURL == null) {
+                return; // No sound file to play
+            }
+            AudioInputStream audioInput = AudioSystem.getAudioInputStream(soundURL);
+            currentClip = AudioSystem.getClip();
+            currentClip.open(audioInput);
+            currentClip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void stopSound() {
+        if (currentClip != null && currentClip.isRunning()) {
+            currentClip.stop();
+            currentClip.close();
+            currentClip = null;
+        }
     }
 
 }
