@@ -1,7 +1,9 @@
 package Representation.node;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
+import InterfaceGame.DialogNodeChance;
 import Univers.TPlayer;
 
 public final class TNodeChance extends ANodeInner {
@@ -12,14 +14,9 @@ public final class TNodeChance extends ANodeInner {
 
 	@Override
 	public void launchNode(TPlayer joueur, JFrame frame) {
-		// Afficher la description puis passer au tirage aléatoire : 
-		System.out.println(this.getDescription());
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-//		this.chooseNext();
+		SwingUtilities.invokeLater(() -> {
+            new DialogNodeChance(frame, joueur, this).setVisible(true);
+        });
 	}
 
 	@Override
