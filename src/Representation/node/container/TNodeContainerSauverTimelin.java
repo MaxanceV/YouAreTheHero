@@ -6,6 +6,7 @@ import Representation.node.TNodeChance;
 import Representation.node.TNodeDecision;
 import Representation.node.TNodeFight;
 import Representation.node.TNodeTerminal;
+import Representation.node.TNodeLevelUp;
 import Univers.TPersonnage;
 import Univers.Enum.ERace;
 import Univers.classe.AClasseGuerrier;
