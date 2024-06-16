@@ -6,8 +6,8 @@ import Univers.TPlayer;
 
 public class TNodeLevelUp extends ANodeInner{
 
-	public TNodeLevelUp(String id, String desc, String descchoix, String image, String son) {
-		super(id, desc, descchoix, image, son);
+	public TNodeLevelUp(String id, String desc, String descchoix) {
+		super(id, desc, descchoix);
 	}
 
 	@Override
