@@ -167,7 +167,7 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		    ANode value = entry.getValue();
 		    if(value instanceof ANodeInner) {
 		    	if(((ANodeInner) value).getChoix() == null) {
-			    	System.out.println("WARNING : le noeuds " + key + " n'a pas de suite");	
+			    	System.out.println("WARNING : le noeud " + key + " n'a pas de suite");	
 		    	}
 		    }
 		}
