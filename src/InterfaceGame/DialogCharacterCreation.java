@@ -19,7 +19,7 @@ import Univers.classe.AClasseGuerrier;
 import Univers.classe.AClasseMage;
 import Univers.classe.IClasse;
 
-public class DialogCharacterCreation extends JDialog {
+public class DialogCharacterCreation extends JDialog implements IDialog {
     private static final long serialVersionUID = 1l;
     private TPlayer joueur;
 
@@ -101,4 +101,9 @@ public class DialogCharacterCreation extends JDialog {
 
         setLocationRelativeTo(null);  // Centre le dialogue au milieu de l'écran
     }
+
+	@Override
+	public JDialog getDialog() {
+		return this;
+	}
 }

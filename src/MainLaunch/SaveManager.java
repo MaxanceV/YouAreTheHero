@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import InterfaceGame.InterfaceCreatorTool;
+import InterfaceGame.CreatorToolDialog;
 import Univers.TPlayer;
 
 public class SaveManager {

@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -20,7 +19,7 @@ import Representation.node.ANode;
 import Representation.node.TNodeChance;
 import Univers.TPlayer;
 
-public class DialogNodeChance extends JDialog {
+public class DialogNodeChance extends JDialog implements IDialog {
     private static final long serialVersionUID = 1L;
     private JButton[] choiceButtons;
     private Random random;
@@ -28,36 +27,18 @@ public class DialogNodeChance extends JDialog {
     public DialogNodeChance(JFrame parent, TPlayer joueur, TNodeChance node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
         random = new Random();
-
-        // Chargement des images
-        ImageIcon settingsIcon = new ImageIcon(getClass().getClassLoader().getResource(InterfaceCreatorTool.SETTING_ICON));
-        ImageIcon backgroundIcon = new ImageIcon(getClass().getClassLoader().getResource("images/decore.png"));
-
+        
         // Panel principal avec l'image de fond
-        JLabel backgroundLabel = new JLabel(backgroundIcon);
+        JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(node);
         backgroundLabel.setLayout(new BorderLayout());
 
-        // Panel pour l'icône des paramètres
-        JPanel settingsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        settingsPanel.setOpaque(false);
-        JButton settingsButton = new JButton(settingsIcon);
-        settingsButton.setContentAreaFilled(false);
-        settingsButton.setBorderPainted(false);
-        settingsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainGame.startOptionsDialog(DialogNodeChance.this);
-            }
-        });
-        settingsPanel.add(settingsButton);
-
         // Ajouter le settingsPanel au haut du backgroundLabel
-        backgroundLabel.add(settingsPanel, BorderLayout.NORTH);
+        backgroundLabel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
 
         // Panel pour la description du nœud
         JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         descriptionPanel.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), "Description"));
-        JLabel descriptionLabel = new JLabel("<html>" + InterfaceCreatorTool.stringDescriptionNodeFormat(node.getDescription()) + "</html>");
+        JLabel descriptionLabel = new JLabel("<html>" + CreatorToolDialog.stringDescriptionNodeFormat(node.getDescription()) + "</html>");
         descriptionPanel.add(descriptionLabel);
 
         // Panel pour les choix du joueur
@@ -117,8 +98,9 @@ public class DialogNodeChance extends JDialog {
         setLocationRelativeTo(parent);
         setLayout(new BorderLayout());
     }
-
-    protected JDialog getDialog() {
-        return this;
-    }
+    
+	@Override
+	public JDialog getDialog() {
+		return this;
+	}
 }

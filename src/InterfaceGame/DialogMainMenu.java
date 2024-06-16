@@ -6,7 +6,7 @@ import javax.swing.*;
 
 import MainLaunch.MainGame;
 
-public class DialogMainMenu extends JDialog {
+public class DialogMainMenu extends JDialog implements IDialog{
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,4 +48,9 @@ public class DialogMainMenu extends JDialog {
         	break;
     	}
     }
+
+	@Override
+	public JDialog getDialog() {
+		return this;
+	}
 }

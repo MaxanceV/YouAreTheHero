@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import MainLaunch.MainGame;
 
-public class DialogOptions extends JDialog {
+public class DialogOptions extends JDialog implements IDialog {
     private static final long serialVersionUID = 1L;
 
     public DialogOptions(JFrame parent, JDialog jDialog) {
@@ -60,7 +60,8 @@ public class DialogOptions extends JDialog {
         setLayout(new BorderLayout());
     }
     
-    protected JDialog getDialog() {
+    @Override
+    public JDialog getDialog() {
 		return this;
 	}
 }

@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -22,7 +21,7 @@ import Univers.TPersonnage;
 import Univers.TPlayer;
 import Univers.Enum.ECompetence;
 
-public class DialogNodeFight extends JDialog {
+public class DialogNodeFight extends JDialog implements IDialog {
     private static final long serialVersionUID = 1L;
     private Random random = new Random();
     private JLabel playerHealthLabel;
@@ -40,27 +39,9 @@ public class DialogNodeFight extends JDialog {
         this.ennemi = node.getEnnemi();
         this.node = node;
 
-        // Chargement des images
-        ImageIcon backgroundIcon = new ImageIcon(getClass().getClassLoader().getResource("images/decore.png"));
-        ImageIcon settingsIcon = new ImageIcon(getClass().getClassLoader().getResource(InterfaceCreatorTool.SETTING_ICON));
-
         // Panel principal avec l'image de fond
-        JLabel backgroundLabel = new JLabel(backgroundIcon);
+        JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(node);
         backgroundLabel.setLayout(new BorderLayout());
-
-        // Panel pour l'icône des paramètres
-        JPanel settingsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        settingsPanel.setOpaque(false);
-        JButton settingsButton = new JButton(settingsIcon);
-        settingsButton.setContentAreaFilled(false);
-        settingsButton.setBorderPainted(false);
-        settingsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainGame.startOptionsDialog(DialogNodeFight.this);
-            }
-        });
-        settingsPanel.add(settingsButton);
 
         // Panel pour afficher les points de vie
         JPanel healthPanel = new JPanel(new GridLayout(2, 1));
@@ -73,13 +54,13 @@ public class DialogNodeFight extends JDialog {
         // Ajouter le settingsPanel et le healthPanel à un panel à droite
         JPanel rightPanel = new JPanel(new BorderLayout());
         rightPanel.setOpaque(false);
-        rightPanel.add(settingsPanel, BorderLayout.NORTH);
+        rightPanel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
         rightPanel.add(healthPanel, BorderLayout.CENTER);
 
         // Panel pour la description du nœud
         JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         descriptionPanel.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), "Description"));
-        descriptionLabel = new JLabel("<html>" + InterfaceCreatorTool.stringDescriptionNodeFormat(node.getDescription()) + "</html>");
+        descriptionLabel = new JLabel("<html>" + CreatorToolDialog.stringDescriptionNodeFormat(node.getDescription()) + "</html>");
         descriptionPanel.add(descriptionLabel);
 
         // Panel pour les boutons de compétences
@@ -294,7 +275,8 @@ public class DialogNodeFight extends JDialog {
         buttonPanel.repaint();
     }
 
-    protected JDialog getDialog() {
+    @Override
+    public JDialog getDialog() {
         return this;
     }
 

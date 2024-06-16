@@ -2,8 +2,8 @@ package InterfaceGame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,7 +19,7 @@ import MainLaunch.MainGame;
 import Representation.node.TNodeTerminal;
 import Univers.TPlayer;
 
-public class DialogNodeTerminal extends JDialog {
+public class DialogNodeTerminal extends JDialog implements IDialog {
     private static final long serialVersionUID = 1L;
 
     public DialogNodeTerminal(JFrame parent, TPlayer joueur, TNodeTerminal tNodeTerminal) {
@@ -35,27 +35,33 @@ public class DialogNodeTerminal extends JDialog {
         if (id.contains("defaite")) {
             mainLabel.setText("DEFAITE");
             mainLabel.setForeground(Color.RED);
-            getContentPane().setBackground(Color.BLACK);
         } else if (id.contains("victoire")) {
             mainLabel.setText("VICTOIRE");
             mainLabel.setForeground(Color.YELLOW);
-            getContentPane().setBackground(Color.WHITE);
         } else {
             mainLabel.setText("FIN");
             mainLabel.setForeground(Color.BLACK);
-            getContentPane().setBackground(Color.LIGHT_GRAY);
         }
 
-        // Ajouter le mainLabel en haut
+        // Panel principal avec l'image de fond
+        JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(tNodeTerminal);
+        backgroundLabel.setLayout(new BorderLayout());
+
+    	// Ajouter le settingsPanel au haut du backgroundLabel
+        backgroundLabel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
+
+        // Panel pour le label principal
         JPanel mainLabelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         mainLabelPanel.add(mainLabel);
         mainLabelPanel.setOpaque(false);
+        backgroundLabel.add(mainLabelPanel, BorderLayout.CENTER);
 
         // Panel pour la description du nœud
         JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         descriptionPanel.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), "Description"));
-        JLabel descriptionLabel = new JLabel("<html>" + InterfaceCreatorTool.stringDescriptionNodeFormat(description) + "</html>");
+        JLabel descriptionLabel = new JLabel("<html>" + CreatorToolDialog.stringDescriptionNodeFormat(description) + "</html>");
         descriptionPanel.add(descriptionLabel);
+        backgroundLabel.add(descriptionPanel, BorderLayout.SOUTH);
 
         // Panel pour les boutons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -82,18 +88,27 @@ public class DialogNodeTerminal extends JDialog {
         buttonPanel.add(mainMenuButton);
         buttonPanel.add(quitButton);
 
+        // Créer un panel principal pour contenir l'image de fond, la description et les choix
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setOpaque(false);
+        mainPanel.add(backgroundLabel, BorderLayout.CENTER);
+
+        // Panel pour contenir la description et les choix
+        JPanel bottomPanel = new JPanel(new BorderLayout());
+        bottomPanel.setOpaque(false);
+        bottomPanel.add(descriptionPanel, BorderLayout.NORTH);
+        bottomPanel.add(buttonPanel, BorderLayout.CENTER);
+
         // Ajouter les panels au dialog
-        setLayout(new BorderLayout());
-        add(mainLabelPanel, BorderLayout.NORTH);
-        add(descriptionPanel, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH);
+        add(mainPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
 
         pack();
         setLocationRelativeTo(parent);
     }
 
-    protected JDialog getDialog() {
+    @Override
+    public JDialog getDialog() {
         return this;
     }
 }
-

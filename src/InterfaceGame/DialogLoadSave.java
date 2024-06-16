@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import MainLaunch.MainGame;
 import MainLaunch.SaveManager;
 
-public class DialogLoadSave extends JDialog {
+public class DialogLoadSave extends JDialog implements IDialog {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> saveBox;
     private JButton validateButton;
@@ -127,4 +127,9 @@ public class DialogLoadSave extends JDialog {
     public String getSelectedSave() {
         return selectedSave;
     }
+
+	@Override
+	public JDialog getDialog() {
+		return this;
+	}
 }
