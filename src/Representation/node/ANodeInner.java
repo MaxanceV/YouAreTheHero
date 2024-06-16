@@ -18,8 +18,4 @@ public abstract class ANodeInner extends ANode {
 	public ANodeInner(String id, String desc, String descchoix) {
 		super(id, desc, descchoix);
 	}
-
-	public void chooseNext(String id) {
-		MainGame.nextNode(id);
-	}
 }
