@@ -1,7 +1,9 @@
 package Representation.node;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
+import InterfaceGame.DialogNodeTerminal;
 import Univers.TPlayer;
 
 public final class TNodeTerminal extends ANode {
@@ -12,13 +14,9 @@ public final class TNodeTerminal extends ANode {
 
 	@Override
 	public void launchNode(TPlayer joueur, JFrame frame) {
-		System.out.println(this.getDescription());
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Fin du jeu. Recommencer ?");
+		SwingUtilities.invokeLater(() -> {
+            new DialogNodeTerminal(frame, joueur, this).setVisible(true);
+        });
 	}
 
 	@Override
