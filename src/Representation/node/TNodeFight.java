@@ -8,8 +8,8 @@ import Univers.TPlayer;
 public final class TNodeFight extends ANodeInner {
 	private TPersonnage ennemi;
 
-	public TNodeFight(String id, String desc, String descchoix, String image, String son, TPersonnage ennemi) {
-		super(id, desc, descchoix, image, son);
+	public TNodeFight(String id, String desc, String descchoix,TPersonnage ennemi) {
+		super(id, desc, descchoix);
 		this.ennemi = ennemi;
 	}
 
