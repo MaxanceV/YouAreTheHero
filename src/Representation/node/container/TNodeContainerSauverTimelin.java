@@ -161,6 +161,17 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		diredragon.setChoix(new ANode[]{combat3});
 		combat2.setChoix(new ANode[]{victoire2,defaitecombat});
 		combat3.setChoix(new ANode[]{victoire3,defaitecombat});
+
+		for(java.util.Map.Entry<String, ANode> entry : getNodesOfTheGame().entrySet()) {
+			String key = entry.getKey();
+		    ANode value = entry.getValue();
+		    if(value instanceof ANodeInner) {
+		    	if(((ANodeInner) value).getChoix() == null) {
+			    	System.out.println("WARNING : le noeuds " + key + " n'a pas de suite");	
+		    	}
+		    }
+		}
+		
 		
 	}
 		
