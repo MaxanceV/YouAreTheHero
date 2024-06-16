@@ -150,6 +150,7 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		elfes.setChoix(new ANode[]{elfesrate,elfesreussi});
 		elfesrate.setChoix(new ANode[]{sortieville});
 		elfesreussi.setChoix(new ANode[]{sortieville});
+		sortieville.setChoix(new ANode[] {combat1});
 		combat1.setChoix(new ANode[]{victoirecombat1,defaitecombat});
 		victoirecombat1.setChoix(new ANode[]{monteerang});
 		monteerang.setChoix(new ANode[]{repairegobelins});
@@ -162,7 +163,6 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		
 	}
 		
-	}
 
 	@Override
 	public ANodeInner getDefaultStartNode() {
