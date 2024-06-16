@@ -8,6 +8,7 @@ import Representation.node.TNodeChance;
 import Representation.node.TNodeDecision;
 import Representation.node.TNodeFight;
 import Representation.node.TNodeTerminal;
+import Representation.node.TNodeLevelUp;
 import Univers.TPersonnage;
 
 public abstract class ANodeContainer {
