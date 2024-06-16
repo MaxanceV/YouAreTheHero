@@ -156,9 +156,9 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		elfesrate.setChoix(new ANode[]{sortieville});
 		elfesreussi.setChoix(new ANode[]{sortieville});
 		sortieville.setChoix(new ANode[] {combat1});
-		combat1.setChoix(new ANode[]{victoirecombat1,defaitecombat});
-		victoirecombat1.setChoix(new ANode[]{monteerang});
-		monteerang.setChoix(new ANode[]{repairegobelins});
+		combat1.setChoix(new ANode[]{monteerang,defaitecombat});
+		monteerang.setChoix(new ANode[]{victoirecombat1});
+		victoirecombat1.setChoix(new ANode[]{repairegobelins});
 		repairegobelins.setChoix(new ANode[]{direrien,direduel,diredragon});
 		direrien.setChoix(new ANode[]{combat2});
 		direduel.setChoix(new ANode[]{combat2});
