@@ -7,7 +7,7 @@ public enum ERace implements Serializable{
 	HUMAIN("Humain",15,12),
 	NAIN("Nain",12,15),
 	ORC("Orc",20,12),
-	GOBELIN("Gobelin",30,12),
+	GOBELIN("Gobelin",25,12),
 	OBSTACLE("Obstacle",20,0);
 	
 	private final String description;
