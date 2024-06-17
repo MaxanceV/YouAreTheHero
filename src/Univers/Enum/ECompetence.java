@@ -1,12 +1,13 @@
 package Univers.Enum;
 
 public enum ECompetence {
-	COUPEPEE("Coup d'épee","Attaque l'ennemi avec son épée", 2, 8,0),
-	BOULEDEFEU("Boule de feu", "Jette une boule de feu sur l'ennemi",2,8,0),
+	COUPEPEE("Coup d'épée","Attaque l'ennemi avec son épée", 2, 8,0),
+	BOULEDEFEU("Boule de feu", "Jette une boule de feu sur l'ennemi",2,12,0),
 	STALACTITE("Stalactite","Lance un pique de glace", 2,8,0),
-	COUPDEPEEADEUXMAIN("Coup d'épee à deux main","Attaque l'ennemi à deux main avec son épée", -2,12,0),
-	POTIONSOIN("Se soigner","Utilise une potion de soin sur lui même",0,0,8),
-	OBSTACLE("Ne rien faire","Ne fait rien",0,0,0);
+	COUPDEPEEADEUXMAIN("Coup d'épée à deux mains","Attaque l'ennemi à deux mains avec son épée", -2,12,0),
+	POTIONSOIN("Se soigner","Utilise une potion de soin sur lui-même",0,0,8),
+	OBSTACLE("Ne rien faire","Ne fait rien",0,0,0),
+	LAMEDEFEU("Lame miraculeuse","Porte un coup avec son épée possédée par une force divine",2,12,0);
 	
 	
 	private String nom;
