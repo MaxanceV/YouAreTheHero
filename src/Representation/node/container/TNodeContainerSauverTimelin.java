@@ -84,8 +84,8 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 				+ "des maisons, ni même des villages. Leur mesure de la destruction est plutôt de l'ordre des villes et capitales. Non, peu importe ce que ces gobelins prétendent, ils n'ont "
 				+ "surement pas de dragon à leurs côtés.'. Ravi d'avoir appris quelque chose d'utile, vous décidez qu'il est temps de sortir de la ville et partir à l'assaut des gobelins.","Vous parlez"
 				+ " elfique");
-		TNodeDecision sortieville = addNodeDecision(SORTIE_VILLE,"Une légère brise souffle agréablement en dehors de la ville. Le soleil est toujours haut dans le ciel et éclaire les grandes plaines."
-				+ "La parfaite platitude de ces grandes étendues vertes est rendue imparfaite par plusieurs bosquets, allant du simple couple de chênes à une petite forêt. Mais votre contemplation est"
+		TNodeDecision sortieville = addNodeDecision(SORTIE_VILLE,"Une légère brise souffle agréablement en dehors de la ville. Le soleil est toujours haut dans le ciel et éclaire les grandes plaines. "
+				+ "La parfaite platitude de ces grandes étendues vertes est rendue imparfaite par plusieurs bosquets, allant du simple couple de chênes à une petite forêt. Mais votre contemplation est "
 				+ "vite interrompue par des cris stridents. Plus loin sur la route principale, une petite créature verte pourchasse un paysan et le pique en ricanant à l'aide d'un pieu "
 				+ "grossièrement taillé. Ces longues oreilles et ces yeux rouges ne laissent aucun doute : c'est un gobelin ! Héros que vous êtes, vous vous lancez à la rescousse du pauvre fermier. "
 				,"Sortir de la ville");
@@ -93,18 +93,18 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		TPersonnage Gobelin = new TPersonnage("Gabin le gobelin", new AClasseGuerrier(), ERace.GOBELIN);
 		Gobelin.setPointVie(10);
 		Gobelin.setClasseArmur(12);
-		TNodeFight    combat1 = addNodeFight(COMBAT_1_GOBELIN,"Alors que vous vous approchez, le gobelin se tourne vers vous. Ses petits yeux méchants s'illuminent d'encore plus de malice et ne prêtent"
+		TNodeFight    combat1 = addNodeFight(COMBAT_1_GOBELIN,"Alors que vous vous approchez, le gobelin se tourne vers vous. Ses petits yeux méchants s'illuminent d'encore plus de malice et ne prêtent "
 				+ "plus aucune attention au paysan qui s'échappe en haletant. Le gobelin sourit...puis se jette sur vous ! ","Affronter le gobelin",Gobelin);
 		
 		TNodeTerminal defaitecombat = addNodeTerminal(DEFAITE_COMBAT,"Une affreuse sensation de vide et d'engourdi envahit votre corps alors que vous encaissez cet ultime coup. Votre souffle\"\r\n"
 				+ "				+ \"est coupé et alors que vous tentez encore de comprendre ce qui vous arrive, vous tombez à genoux. Un dernier soupir fuit votre corps et vos yeux se ferment..."
 				,"Continuer");
-		TNodeLevelUp monteerang = addNodeLevelUp(MONTEE_RANG,"Gagner ce combat vous a offert beaucoup d'expériences sur vos techniques de combat. Vous sentez un souffle d'inspiration"
+		TNodeLevelUp monteerang = addNodeLevelUp(MONTEE_RANG,"Gagner ce combat vous a offert beaucoup d'expériences sur vos techniques de combat. Vous sentez un souffle d'inspiration "
 				+ "qui envahit votre corps. C'est le moment de monter de niveau !","Monter de niveau");
 		// Vous passez de "classe actuelle" à "classe évoluée" ! Félicitations. 
 		TNodeDecision victoirecombat1 = addNodeDecision(VICTOIRE_COMBAT_1,"Le gobelin, vaincu, s'effondre devant vous. Quel beau combat ! Tandis que vous reprenez votre souffle et appréciez la nouvelle "
-				+ " force qui réside en vous, le paysan que vous venez de sauver s'approche de vous : 'Oh merci ! Je ne sais pas ce que j'aurai fait sans vous, milles merci aventurier ! Si jamais vous"
-				+ "voulez vous mesurer au reste de leur tribu, je vous conseille d'aller vers l'est. C'est là que se trouve leur repaire. Bonne chance, et merci encore !'. Fier d'avoir sauvé un"
+				+ " force qui réside en vous, le paysan que vous venez de sauver s'approche de vous : 'Oh merci ! Je ne sais pas ce que j'aurai fait sans vous, milles merci aventurier ! Si jamais vous "
+				+ "voulez vous mesurer au reste de leur tribu, je vous conseille d'aller vers l'est. C'est là que se trouve leur repaire. Bonne chance, et merci encore !'. Fier d'avoir sauvé un "
 				+ "si brave homme, vous regarder la direction qu'il pointe. Un sentier semble sillonner parmi les plaines jusqu'à une petit forêt, assez opaque vue d'ici. Voilà votre prochain objectif."
 				,"Continuer");
 		
@@ -112,15 +112,15 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		TNodeDecision repairegobelins = addNodeDecision(REPAIRE_GOBELINS,"Après avoir suivi le sentier un moment, vous entrez dans la forêt. L'air est lourd et les oiseaux ne chantent pas. Un léger "
 				+ "frisson vous parcourt, mais vous n'êtes pas allé aussi loin pour vous arrêter maintenant. Vous chassez ces angoisses et resserez votre poigne sur votre arme. Une odeur nauséabonde "
 				+ "très semblable à celle du gobelin que vous avez affronté tout à l'heure vous emplit les narines. Le sentier fait un tournant et vous apercevez soudain, droit devant vous, "
-				+ "l'entrée d'une grotte. Mais ce n'est pas cette entrée qui vous surprend, c'est plutôt la horde de gobelins qui l'entoure. Tous vous fixent, un grand sourire aux lèvres. Face à un tel"
+				+ "l'entrée d'une grotte. Mais ce n'est pas cette entrée qui vous surprend, c'est plutôt la horde de gobelins qui l'entoure. Tous vous fixent, un grand sourire aux lèvres. Face à un tel "
 				+ "nombre, ni la fuite ni un combat ouvert ne semblent une bonne idée. Mais vous n'avez pas le temps de décider d'un plan d'action car au milieu de la troupe, bousculant ses collègues, "
 				+ "un gobelin portant une étrange coiffe et un bâton à l'air vaguement magique se fraie un passage vers vous. Il parvient finalement à sortir de la foule et s'avance de quelques pas. "
-				+ "'Hum hum. Bonjour monsieur ! Tu es pris au piège, monsieur ! Tu sens le sang de gobelin, tu paieras pour ce que tu as fait à Gabin !'. Le chaman s'approche vers vous, mais le temps"
+				+ "'Hum hum. Bonjour monsieur ! Tu es pris au piège, monsieur ! Tu sens le sang de gobelin, tu paieras pour ce que tu as fait à Gabin !'. Le chaman s'approche vers vous, mais le temps "
 				+ "qu'il couvre cette distance vous permet de dire quelque chose :","Suivre le sentier vers le repaire des gobelins.");
 		
 		TNodeDecision direrien = addNodeDecision(DIRE_RIEN, "Vous ne dites rien et laissez le chaman s'approcher de vous. Assez étrangement, les autres gobelins ne semblent pas le suivre. Vous levez "
 				+ "votre arme et vous préparez au combat. ","Ne rien dire.");
-		TNodeDecision diredragon = addNodeDecision(DIRE_DRAGON,"Vous hélez le chaman alors qu'il s'avance vers vous : 'Si je gagne un duel contre votre dragon, vous partirez d'ici et laisserez"
+		TNodeDecision diredragon = addNodeDecision(DIRE_DRAGON,"Vous hélez le chaman alors qu'il s'avance vers vous : 'Si je gagne un duel contre votre dragon, vous partirez d'ici et laisserez "
 				+ " Timelin tranquille ?'. Le chaman réfléchit un instant, puis un grand sourire fend son petit visage. Il acquiesce. Les gobelins forment une haie vers l'entrée de la grotte et leurs "
 				+ "yeux rouges pétillent d'impatience. Vous levez votre arme et entrez prudemment dans la grotte, prêt au combat.","Proposer d'affronter le dragon.");
 		TNodeDecision direduel = addNodeDecision(DIRE_DUEL,"Vous hélez le chaman alors qu'il s'avance vers vous : 'Si je gagne un duel contre toi, vous partirez d'ici et laisserez Timelin tranquille ?'."
@@ -136,8 +136,8 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 				+ "apprêtez à massacrer ces pauvres sacs.","Affronter le dragon",DragonFarine);
 		
 		TPersonnage Chaman = new TPersonnage("Toutankharton le chaman", new TClasseArchimage(), ERace.GOBELIN);
-		DragonFarine.setPointVie(25);
-		DragonFarine.setClasseArmur(14);
+		Chaman.setPointVie(25);
+		Chaman.setClasseArmur(14);
 		TNodeFight 	  combat2 = addNodeFight(COMBAT_3_CHAMAN,"Vous voyez des tatouages tribaux sur le visage du chaman qui semblent s'illuminer, comme traversés par une puissance magique. Ses yeux, "
 				+ "au contraire, sont imperturbablement fixés sur vous. Il s'arrête, lève son bâton, et le combat commence. ","Affronter le chaman",Chaman);
 		
@@ -164,8 +164,8 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		direrien.setChoix(new ANode[]{combat2});
 		direduel.setChoix(new ANode[]{combat2});
 		diredragon.setChoix(new ANode[]{combat3});
-		combat2.setChoix(new ANode[]{victoire2,defaitecombat});
-		combat3.setChoix(new ANode[]{victoire3,defaitecombat});
+		combat2.setChoix(new ANode[]{victoire3,defaitecombat});
+		combat3.setChoix(new ANode[]{victoire2,defaitecombat});
 		
 		for(java.util.Map.Entry<String, ANode> entry : getNodesOfTheGame().entrySet()) {
 			String key = entry.getKey();
