@@ -7,7 +7,7 @@ public enum ERace implements Serializable{
 	HUMAIN("Humain",15,12),
 	NAIN("Nain",12,15),
 	ORC("Orc",20,12),
-	GOBELIN("Gobelin",10,12),
+	GOBELIN("Gobelin",30,12),
 	OBSTACLE("Obstacle",20,0);
 	
 	private final String description;
@@ -30,5 +30,16 @@ public enum ERace implements Serializable{
 
 	public int getArmorClass() {
 		return armorClass;
+	}
+
+	public static ERace getRaceFromString(String string) {
+		ERace ret = null;
+		for(ERace race : ERace.values()) {
+			if (race.getDescription().equals(string)) {
+				ret = race;
+				break;
+			}
+		}
+		return ret;
 	}
 }

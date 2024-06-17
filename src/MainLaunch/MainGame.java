@@ -28,7 +28,6 @@ public class MainGame {
 
     public static void main(String[] args) {
     	createDefaultFrame();
-    	loadStory();
     	OpenMainMenu(); 	
     }
 
@@ -70,14 +69,16 @@ public class MainGame {
 	}
 	
 	public static void playerCreated(TPlayer player) {
+		loadStory();
 		joueur = player;
 		joueur.setCurrentNode(nodeOfTheStory.getDefaultStartNode().getId());
 		launchNode();
 		}
 	
-	public static void playerLoader(String player) {
+	public static void playerLoaded(String player) {
 		joueur = SaveManager.loadPlayer(player);
 		if (joueur != null) {
+			loadStory();
     	    System.out.println("Joueur chargé: " + joueur.getNom());
     	    launchNode();
     	} else {
@@ -91,7 +92,6 @@ public class MainGame {
 		if(null != node) {
 			CreatorToolDialog.playSound("sons/" + node.getId() + ".wav");
 			node.launchNode(joueur, frame);
-			
 		} else {
 			//TODO
 		}

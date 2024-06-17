@@ -62,7 +62,7 @@ public class DialogLoadSave extends JDialog implements IDialog {
             public void actionPerformed(ActionEvent e) {
                 selectedSave = (String) saveBox.getSelectedItem();
                 if (selectedSave != null) {
-                    MainGame.playerLoader(selectedSave);
+                    MainGame.playerLoaded(selectedSave);
                     dispose();
                 }
             }

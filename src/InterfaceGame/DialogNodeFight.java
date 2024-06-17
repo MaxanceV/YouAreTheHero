@@ -156,7 +156,11 @@ public class DialogNodeFight extends JDialog implements IDialog {
     	joueur.gagnePointVie(soin);
         descriptionLabel.setText("<html>Vous avez gagné " + soin + " points de vie.</html>");
         updateHealthLabels();
-        showContinueButton("Tour de l'ennemi", this::handleEnemyTurn);
+        if(ennemi.getPointVie()>0) {
+        	enemyTurn();
+        } else {
+        	checkEndOfCombat();
+        }
     }
 
     private void handleAttack() {
@@ -166,7 +170,7 @@ public class DialogNodeFight extends JDialog implements IDialog {
            showDamageButton();
         } else {
             descriptionLabel.setText("<html>Vous n'avez pas réussi à toucher " + ennemi.getNom() + "</html>");
-            showContinueButton("Tour de l'ennemi", this::handleEnemyTurn);
+            enemyTurn();
         }
     }
 
@@ -181,7 +185,11 @@ public class DialogNodeFight extends JDialog implements IDialog {
                 ennemi.pertPointVie(degat);
                 descriptionLabel.setText("<html>Vous avez infligé " + degat + " points de dégâts à " + ennemi.getNom() + " avec " + selectedCompetence.getNom() + ".</html>");
                 updateHealthLabels();
-                showContinueButton("Tour de l'ennemi", DialogNodeFight.this::handleEnemyTurn);
+                if(ennemi.getPointVie()>0) {
+                	enemyTurn();
+                } else {
+                	checkEndOfCombat();
+                }
             }
         });
 
@@ -190,7 +198,11 @@ public class DialogNodeFight extends JDialog implements IDialog {
         buttonPanel.repaint();
     }
 
-    private void handleEnemyTurn() {
+    protected void enemyTurn() {
+    	showContinueButton("Tour de l'ennemi", this::handleEnemyTurn);
+	}
+
+	private void handleEnemyTurn() {
         descriptionLabel.setText("<html>C'est au tour de l'ennemi !</html>");
         buttonPanel.removeAll();
         buttonPanel.revalidate();

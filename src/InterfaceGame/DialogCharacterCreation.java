@@ -92,8 +92,8 @@ public class DialogCharacterCreation extends JDialog implements IDialog {
 
         // Listener du bouton de confirmation
         confirmButton.addActionListener(e -> {
-            ERace raceJoueur = raceBox.getSelectedItem().equals("Humain") ? ERace.HUMAIN : ERace.NAIN;
-            raceJoueur = raceBox.getSelectedItem().equals("Nain") ? ERace.NAIN : ERace.ORC;
+        	
+            ERace raceJoueur = ERace.getRaceFromString(raceBox.getSelectedItem().toString());
             IClasse classeJoueur = classBox.getSelectedItem().equals("Guerrier") ? new AClasseGuerrier() : new AClasseMage();
             joueur = new TPlayer(nameField.getText(), classeJoueur, raceJoueur);
             MainGame.playerCreated(joueur);
