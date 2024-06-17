@@ -102,7 +102,7 @@ public class DialogNodeFight extends JDialog implements IDialog {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     selectedCompetence = competence;
-                    descriptionLabel.setText("<html>Vous avez choisit " + selectedCompetence.getNom() + "</html>");
+                    descriptionLabel.setText("<html>Vous avez choisi " + selectedCompetence.getNom() + "</html>");
                     if(selectedCompetence.getMaxDeDegat()>0) {
                         showAttackButton();
                     } else if (selectedCompetence.getMaxDeHeal() > 0) {
@@ -173,7 +173,7 @@ public class DialogNodeFight extends JDialog implements IDialog {
     private void showDamageButton() {
         buttonPanel.removeAll();
 
-        JButton damageButton = new JButton("Combien de dégat aller vous infliger ?");
+        JButton damageButton = new JButton("Combien de dégâts allez vous infliger ?");
         damageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
