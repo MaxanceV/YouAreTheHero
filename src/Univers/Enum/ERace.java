@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public enum ERace implements Serializable{
 	//ATTRIBUT DANS L'ORDRE : Nom,pvMax, ca par défaut
-	HUMAIN("Humain",20,10),
-	NAIN("Nain",15,20),
-	GOBELIN("Gobelin",30,5),
-	OBSTACLE("Obstacle",20,30);
+	HUMAIN("Humain",15,12),
+	NAIN("Nain",12,15),
+	ORC("Orc",20,12),
+	GOBELIN("Gobelin",10,12),
+	OBSTACLE("Obstacle",20,0);
 	
 	private final String description;
 	private final int hitPoints;
