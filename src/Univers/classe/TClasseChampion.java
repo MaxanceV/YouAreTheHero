@@ -12,7 +12,7 @@ public final class TClasseChampion extends AClasseGuerrier {
 
 	@Override
 	public ECompetence[] getCompetences() {
-		ECompetence[] competence = {ECompetence.COUPEPEE, ECompetence.COUPDEPEEADEUXMAIN};
+		ECompetence[] competence = {ECompetence.COUPEPEE, ECompetence.COUPDEPEEADEUXMAIN, ECompetence.LAMEDEFEU};
 		return competence;
 	}
 
