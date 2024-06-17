@@ -96,8 +96,8 @@ public class TNodeContainerSauverTimelin extends ANodeContainer {
 		TNodeFight    combat1 = addNodeFight(COMBAT_1_GOBELIN,"Alors que vous vous approchez, le gobelin se tourne vers vous. Ses petits yeux méchants s'illuminent d'encore plus de malice et ne prêtent "
 				+ "plus aucune attention au paysan qui s'échappe en haletant. Le gobelin sourit...puis se jette sur vous ! ","Affronter le gobelin",Gobelin);
 		
-		TNodeTerminal defaitecombat = addNodeTerminal(DEFAITE_COMBAT,"Une affreuse sensation de vide et d'engourdi envahit votre corps alors que vous encaissez cet ultime coup. Votre souffle\"\r\n"
-				+ "				+ \"est coupé et alors que vous tentez encore de comprendre ce qui vous arrive, vous tombez à genoux. Un dernier soupir fuit votre corps et vos yeux se ferment..."
+		TNodeTerminal defaitecombat = addNodeTerminal(DEFAITE_COMBAT,"Une affreuse sensation de vide et d'engourdi envahit votre corps alors que vous encaissez cet ultime coup. Votre souffle "
+				+ "est coupé et alors que vous tentez encore de comprendre ce qui vous arrive, vous tombez à genoux. Un dernier soupir fuit votre corps et vos yeux se ferment..."
 				,"Continuer");
 		TNodeLevelUp monteerang = addNodeLevelUp(MONTEE_RANG,"Gagner ce combat vous a offert beaucoup d'expériences sur vos techniques de combat. Vous sentez un souffle d'inspiration "
 				+ "qui envahit votre corps. C'est le moment de monter de niveau !","Monter de niveau");
