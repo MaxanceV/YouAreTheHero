@@ -62,7 +62,7 @@ public class DialogNodeChance extends JDialog implements IDialog {
         }
 
         // Bouton pour tenter sa chance
-        JButton chanceButton = new JButton("Tenter sa chance");
+        JButton chanceButton = new JButton("Tenter votre chance");
         chanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
