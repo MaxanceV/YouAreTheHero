@@ -19,11 +19,12 @@ import MainLaunch.MainGame;
 import Representation.node.TNodeTerminal;
 import Univers.TPlayer;
 
-public class DialogNodeTerminal extends JDialog implements IDialog {
+public class DialogNodeTerminal extends JDialog  {
     private static final long serialVersionUID = 1L;
 
     public DialogNodeTerminal(JFrame parent, TPlayer joueur, TNodeTerminal tNodeTerminal) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
         // Déterminer l'apparence en fonction de la description
         String id = tNodeTerminal.getId();
@@ -48,7 +49,7 @@ public class DialogNodeTerminal extends JDialog implements IDialog {
         backgroundLabel.setLayout(new BorderLayout());
 
     	// Ajouter le settingsPanel au haut du backgroundLabel
-        backgroundLabel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
+        backgroundLabel.add(CreatorToolDialog.getSettingsAndStatsButtons(this, joueur), BorderLayout.EAST);
 
         // Panel pour le label principal
         JPanel mainLabelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -71,8 +72,7 @@ public class DialogNodeTerminal extends JDialog implements IDialog {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGame.OpenMainMenu();
-                dispose();
+                MainGame.OpenMainMenu(getDialog());
             }
         });
 
@@ -106,8 +106,7 @@ public class DialogNodeTerminal extends JDialog implements IDialog {
         pack();
         setLocationRelativeTo(parent);
     }
-
-    @Override
+    
     public JDialog getDialog() {
         return this;
     }

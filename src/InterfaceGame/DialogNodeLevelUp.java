@@ -17,19 +17,20 @@ import MainLaunch.MainGame;
 import Representation.node.TNodeLevelUp;
 import Univers.TPlayer;
 
-public class DialogNodeLevelUp extends JDialog implements IDialog {
+public class DialogNodeLevelUp extends JDialog  {
     private static final long serialVersionUID = 1L;
     private JButton actionButton;
 
     public DialogNodeLevelUp(JFrame parent, TPlayer joueur, TNodeLevelUp node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         
         // Panel principal avec l'image de fond
         JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(node);
         backgroundLabel.setLayout(new BorderLayout());
 
         // Ajouter le settingsPanel au haut du backgroundLabel
-        backgroundLabel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
+        backgroundLabel.add(CreatorToolDialog.getSettingsAndStatsButtons(this, joueur), BorderLayout.EAST);
 
         // Panel pour la description du nœud
         JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -78,7 +79,6 @@ public class DialogNodeLevelUp extends JDialog implements IDialog {
         setLayout(new BorderLayout());
     }
     
-    @Override
     public JDialog getDialog() {
         return this;
     }

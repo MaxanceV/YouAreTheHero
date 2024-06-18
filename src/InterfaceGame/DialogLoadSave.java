@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import MainLaunch.MainGame;
 import MainLaunch.SaveManager;
 
-public class DialogLoadSave extends JDialog implements IDialog {
+public class DialogLoadSave extends JDialog {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> saveBox;
     private JButton validateButton;
@@ -26,6 +26,7 @@ public class DialogLoadSave extends JDialog implements IDialog {
 
     public DialogLoadSave(JFrame parent) {
         super(parent, "Charger une Sauvegarde", true);  // true pour rendre le dialogue modal
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
 
         // Panel pour sélectionner une sauvegarde
@@ -50,8 +51,7 @@ public class DialogLoadSave extends JDialog implements IDialog {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGame.OpenMainMenu();
-                dispose();
+                MainGame.OpenMainMenu(getDialog());
             }
         });
 
@@ -128,7 +128,6 @@ public class DialogLoadSave extends JDialog implements IDialog {
         return selectedSave;
     }
 
-	@Override
 	public JDialog getDialog() {
 		return this;
 	}

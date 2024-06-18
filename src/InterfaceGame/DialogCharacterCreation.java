@@ -19,7 +19,7 @@ import Univers.classe.AClasseGuerrier;
 import Univers.classe.AClasseMage;
 import Univers.classe.IClasse;
 
-public class DialogCharacterCreation extends JDialog implements IDialog {
+public class DialogCharacterCreation extends JDialog {
     private static final long serialVersionUID = 1l;
     private TPlayer joueur;
 
@@ -28,6 +28,7 @@ public class DialogCharacterCreation extends JDialog implements IDialog {
         setSize(300, 200);
         setLayout(new GridLayout(5, 1));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
         // Nom du personnage
         add(new JLabel("Entrez votre nom :"));
@@ -48,8 +49,7 @@ public class DialogCharacterCreation extends JDialog implements IDialog {
         JButton backToMenuButton = new JButton("Retour");
         add(backToMenuButton);
         backToMenuButton.addActionListener(e -> {
-        	MainGame.OpenMainMenu();
-        	this.dispose();
+        	MainGame.OpenMainMenu(this);
         });
         
         // Bouton de confirmation
@@ -103,7 +103,6 @@ public class DialogCharacterCreation extends JDialog implements IDialog {
         setLocationRelativeTo(null);  // Centre le dialogue au milieu de l'écran
     }
 
-	@Override
 	public JDialog getDialog() {
 		return this;
 	}

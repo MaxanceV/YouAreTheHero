@@ -6,12 +6,13 @@ import javax.swing.*;
 
 import MainLaunch.MainGame;
 
-public class DialogMainMenu extends JDialog implements IDialog{
+public class DialogMainMenu extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
     public DialogMainMenu(JFrame parent) {
         super(parent, "Menu Principal", true);  // true pour rendre le dialogue modal
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         setupMenu(parent);
     }
 
@@ -49,7 +50,6 @@ public class DialogMainMenu extends JDialog implements IDialog{
     	}
     }
 
-	@Override
 	public JDialog getDialog() {
 		return this;
 	}

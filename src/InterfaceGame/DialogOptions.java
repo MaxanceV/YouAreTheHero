@@ -8,26 +8,31 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import MainLaunch.MainGame;
 
-public class DialogOptions extends JDialog implements IDialog {
+public class DialogOptions extends JDialog {
     private static final long serialVersionUID = 1L;
 
     public DialogOptions(JFrame parent, JDialog jDialog) {
         super(parent, "Options", true);  // true pour rendre le dialogue modal
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
+        // Label pour informer de la sauvegarde automatique
+        JLabel autoSaveLabel = new JLabel("Votre partie est sauvegardée automatiquement.");
+        autoSaveLabel.setHorizontalAlignment(JLabel.CENTER);  // Centre le texte
+        
         // Panel pour les boutons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        
+
         JButton mainMenuButton = new JButton("Retourner au Menu principal");
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	jDialog.dispose();
-                MainGame.OpenMainMenu();
-                dispose();
+                jDialog.dispose();
+                MainGame.OpenMainMenu(getDialog());
             }
         });
 
@@ -35,7 +40,7 @@ public class DialogOptions extends JDialog implements IDialog {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	jDialog.dispose();
+                jDialog.dispose();
                 MainGame.quit(getDialog());
             }
         });
@@ -52,16 +57,16 @@ public class DialogOptions extends JDialog implements IDialog {
         buttonPanel.add(quitButton);
         buttonPanel.add(returnButton);
 
-        // Ajouter le panel des boutons au centre du dialog
+        // Ajouter les éléments au dialog
+        add(autoSaveLabel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
         
         pack();
         setLocationRelativeTo(parent);
         setLayout(new BorderLayout());
     }
-    
-    @Override
+
     public JDialog getDialog() {
-		return this;
-	}
+        return this;
+    }
 }

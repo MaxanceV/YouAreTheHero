@@ -9,6 +9,7 @@ import InterfaceGame.DialogLoadSave;
 import InterfaceGame.DialogMainMenu;
 import InterfaceGame.DialogNodeDecision;
 import InterfaceGame.DialogOptions;
+import InterfaceGame.DialogStatistics;
 import Representation.node.ANode;
 import Representation.node.TNodeChance;
 import Representation.node.TNodeDecision;
@@ -16,6 +17,7 @@ import Representation.node.TNodeFight;
 import Representation.node.TNodeTerminal;
 import Representation.node.container.ANodeContainer;
 import Representation.node.container.TNodeContainerSauverTimelin;
+import Univers.TPersonnage;
 import Univers.TPlayer;
 import Univers.Enum.ERace;
 import Univers.classe.AClasseGuerrier;
@@ -28,7 +30,7 @@ public class MainGame {
 
     public static void main(String[] args) {
     	createDefaultFrame();
-    	OpenMainMenu(); 	
+    	OpenMainMenu(null); 	
     }
 
 	private static void loadStory() {
@@ -43,7 +45,10 @@ public class MainGame {
         frame.setVisible(false);
 	}
 
-	public static void OpenMainMenu() {
+	public static void OpenMainMenu(JDialog jDialog) {
+		if(null != jDialog) {
+			jDialog.dispose();
+		}
 		CreatorToolDialog.stopSound();
         SwingUtilities.invokeLater(() -> {
             new DialogMainMenu(frame).setVisible(true);
@@ -83,7 +88,7 @@ public class MainGame {
     	    launchNode();
     	} else {
     	    System.out.println("Erreur lors du chargement du joueur");
-    	    OpenMainMenu();
+    	    OpenMainMenu(null);
     	}
 	}
 
@@ -135,5 +140,11 @@ public class MainGame {
 		}
 		frame.dispose();
 		System.exit(0);
+	}
+
+	public static void startStatisticsDialog(JDialog dialog, TPersonnage player) {
+		SwingUtilities.invokeLater(() -> {
+			new DialogStatistics(frame, player).setVisible(true);
+		});
 	}
 }

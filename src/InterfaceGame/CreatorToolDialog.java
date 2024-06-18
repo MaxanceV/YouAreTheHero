@@ -1,10 +1,8 @@
 package InterfaceGame;
 
-import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -13,16 +11,21 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import MainLaunch.MainGame;
 import Representation.node.ANode;
+import Univers.TPersonnage;
 
 public class CreatorToolDialog {
 	final static String SETTING_ICON = "images/setting.png";
+	final static String STAT_BUTTON_ICON = "images/statbutton.png";
+	final static String HEALTH_ITEM = "images/coeur.png";
 	final static String DEFAULT_DECORE_IMAGE = "images/decore.png";
 	private static final int MAX_IMAGE_WIDTH = 800;  // Change to your desired max width
 	private static final int MAX_IMAGE_HEIGHT = 400; // Change to your desired max height
@@ -102,21 +105,39 @@ public class CreatorToolDialog {
         return new JLabel(backgroundIcon);
     }
 	
-	public static JPanel getSettingButton(IDialog dialog) {
-        JPanel settingsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        settingsPanel.setOpaque(false);
-        JButton settingsButton = new JButton(new ImageIcon(dialog.getClass().getClassLoader().getResource(SETTING_ICON)));
-        settingsButton.setContentAreaFilled(false);
-        settingsButton.setBorderPainted(false);
-        settingsButton.addActionListener((ActionListener) new ActionListener() {
-        	@Override
-            public void actionPerformed(ActionEvent e) {
-                MainGame.startOptionsDialog(dialog.getDialog());
-            }
-        });
-        settingsPanel.add(settingsButton);
-        return settingsPanel;
-    }
+	public static JPanel getSettingsAndStatsButtons(JDialog dialog, TPersonnage player) {
+	    // Panel principal pour aligner les boutons verticalement
+	    JPanel verticalButtonPanel = new JPanel();
+	    verticalButtonPanel.setLayout(new BoxLayout(verticalButtonPanel, BoxLayout.Y_AXIS));
+	    verticalButtonPanel.setOpaque(false);
+
+	    // Bouton des paramètres
+	    JButton settingsButton = new JButton(new ImageIcon(dialog.getClass().getClassLoader().getResource(SETTING_ICON)));
+	    settingsButton.setContentAreaFilled(false);
+	    settingsButton.setBorderPainted(false);
+	    settingsButton.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            MainGame.startOptionsDialog(dialog);
+	        }
+	    });
+	    verticalButtonPanel.add(settingsButton);
+
+	    // Bouton des statistiques
+	    JButton statsButton = new JButton(new ImageIcon(dialog.getClass().getClassLoader().getResource(STAT_BUTTON_ICON)));
+	    statsButton.setContentAreaFilled(false);
+	    statsButton.setBorderPainted(false);
+	    statsButton.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            MainGame.startStatisticsDialog(dialog, player);
+	        }
+	    });
+	    verticalButtonPanel.add(statsButton);
+
+	    return verticalButtonPanel;
+	}
+	
 	
 	public static void playSound(String soundFile) {
         stopSound(); // Stop any previously playing sound

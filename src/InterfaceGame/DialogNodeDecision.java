@@ -18,11 +18,12 @@ import Representation.node.ANode;
 import Representation.node.TNodeDecision;
 import Univers.TPlayer;
 
-public class DialogNodeDecision extends JDialog implements IDialog {
+public class DialogNodeDecision extends JDialog {
     private static final long serialVersionUID = 1L;
 
     public DialogNodeDecision(JFrame parent, TPlayer joueur, TNodeDecision node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
 
         // Panel principal avec l'image de fond
@@ -30,7 +31,7 @@ public class DialogNodeDecision extends JDialog implements IDialog {
         backgroundLabel.setLayout(new BorderLayout());
 
         // Ajouter le settingsPanel au haut du backgroundLabel
-        backgroundLabel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
+        backgroundLabel.add(CreatorToolDialog.getSettingsAndStatsButtons(this, joueur), BorderLayout.EAST);
 
         // Panel pour la description du nœud
         JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -73,7 +74,6 @@ public class DialogNodeDecision extends JDialog implements IDialog {
         setLayout(new BorderLayout());
     }
 
-	@Override
 	public JDialog getDialog() {
 		return this;
 	}

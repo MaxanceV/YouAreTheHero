@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -21,7 +22,7 @@ import Univers.TPersonnage;
 import Univers.TPlayer;
 import Univers.Enum.ECompetence;
 
-public class DialogNodeFight extends JDialog implements IDialog {
+public class DialogNodeFight extends JDialog  {
     private static final long serialVersionUID = 1L;
     private Random random = new Random();
     private JLabel playerHealthLabel;
@@ -38,6 +39,7 @@ public class DialogNodeFight extends JDialog implements IDialog {
         this.joueur = joueur;
         this.ennemi = node.getEnnemi();
         this.node = node;
+        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
         // Panel principal avec l'image de fond
         JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(node);
@@ -46,15 +48,15 @@ public class DialogNodeFight extends JDialog implements IDialog {
         // Panel pour afficher les points de vie
         JPanel healthPanel = new JPanel(new GridLayout(2, 1));
         healthPanel.setOpaque(false);
-        playerHealthLabel = new JLabel("Votre vie : \n" + joueur.getPointVie());
-        enemyHealthLabel = new JLabel("PV de " + ennemi.getNom() + " : \n" + ennemi.getPointVie());
+        playerHealthLabel = new JLabel("Vos PV: " + joueur.getPointVie() + "/" + joueur.getRace().getHitPointsMax(), new ImageIcon(getClass().getClassLoader().getResource(CreatorToolDialog.HEALTH_ITEM)), JLabel.LEFT);
+        enemyHealthLabel = new JLabel("PV " + ennemi.getNom() + ": " + ennemi.getPointVie() + "/" + ennemi.getRace().getHitPointsMax(), new ImageIcon(getClass().getClassLoader().getResource(CreatorToolDialog.HEALTH_ITEM)), JLabel.LEFT);
         healthPanel.add(playerHealthLabel);
         healthPanel.add(enemyHealthLabel);
 
         // Ajouter le settingsPanel et le healthPanel à un panel à droite
         JPanel rightPanel = new JPanel(new BorderLayout());
         rightPanel.setOpaque(false);
-        rightPanel.add(CreatorToolDialog.getSettingButton(this), BorderLayout.NORTH);
+        rightPanel.add(CreatorToolDialog.getSettingsAndStatsButtons(this, joueur), BorderLayout.EAST);
         rightPanel.add(healthPanel, BorderLayout.CENTER);
 
         // Panel pour la description du nœud
@@ -287,7 +289,7 @@ public class DialogNodeFight extends JDialog implements IDialog {
         buttonPanel.repaint();
     }
 
-    @Override
+    
     public JDialog getDialog() {
         return this;
     }
