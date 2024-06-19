@@ -25,6 +25,7 @@ public class DialogNodeTerminal extends JDialog  {
     public DialogNodeTerminal(JFrame parent, TPlayer joueur, TNodeTerminal tNodeTerminal) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
 
         // Déterminer l'apparence en fonction de la description
         String id = tNodeTerminal.getId();

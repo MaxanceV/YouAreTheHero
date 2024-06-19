@@ -29,7 +29,6 @@ public class CreatorToolDialog {
 	final static String DEFAULT_DECORE_IMAGE = "images/decore.png";
 	private static final int MAX_IMAGE_WIDTH = 800;  // Change to your desired max width
 	private static final int MAX_IMAGE_HEIGHT = 400; // Change to your desired max height
-	private static Clip currentClip;
 	
 	public static String insertLineBreaks(String input, int lineLength) {
         StringBuilder result = new StringBuilder();
@@ -83,28 +82,36 @@ public class CreatorToolDialog {
 	}
 	
 	public static JLabel createBackgroundLabel(ANode node) {
-        ImageIcon backgroundIcon;
-        try {
-            // Chargement de l'image spécifique au nœud
-            backgroundIcon = new ImageIcon(CreatorToolDialog.class.getClassLoader().getResource("images/" + node.getId() + ".png"));
-            // Vérifier si l'image a été chargée correctement
-            if (backgroundIcon.getImageLoadStatus() != java.awt.MediaTracker.COMPLETE) {
-                throw new RuntimeException("Image not loaded");
-            }
-
-            // Redimensionner l'image si nécessaire
-            Image img = backgroundIcon.getImage();
-            Image scaledImg = getScaledImage(img);
-            backgroundIcon = new ImageIcon(scaledImg);
-        } catch (Exception e) {
-            // En cas d'erreur, charger l'image par défaut sans redimensionnement
-            backgroundIcon = new ImageIcon(CreatorToolDialog.class.getClassLoader().getResource(DEFAULT_DECORE_IMAGE));
-        }
-
-        // Panel principal avec l'image de fond
-        return new JLabel(backgroundIcon);
+        return createBackgroundLabel("images/" + node.getId() + ".png");
     }
+           
 	
+	public static JLabel createBackgroundLabel(String link) {
+		ImageIcon backgroundIcon;
+		try {	
+	        // Chargement de l'image spécifique
+	        backgroundIcon = new ImageIcon(CreatorToolDialog.class.getClassLoader().getResource(link));
+			// Vérifier si l'image a été chargée correctement
+	        if (backgroundIcon.getImageLoadStatus() != java.awt.MediaTracker.COMPLETE) {
+	            throw new RuntimeException("Image not loaded");
+	        }
+	
+	        // Redimensionner l'image si nécessaire
+	        Image img = backgroundIcon.getImage();
+	        Image scaledImg = getScaledImage(img);
+	        backgroundIcon = new ImageIcon(scaledImg);
+	    } catch (Exception e) {
+	        // En cas d'erreur, charger l'image par défaut sans redimensionnement
+	        backgroundIcon = new ImageIcon(CreatorToolDialog.class.getClassLoader().getResource(DEFAULT_DECORE_IMAGE));
+	    }
+	
+	    // Panel principal avec l'image de fond
+	    return new JLabel(backgroundIcon);
+	}
+	public static Image getIconOfDialog() {
+		ImageIcon icon = new ImageIcon(CreatorToolDialog.class.getClassLoader().getResource("images/bouclier.png"));
+        return icon.getImage();
+	}
 	public static JPanel getSettingsAndStatsButtons(JDialog dialog, TPersonnage player) {
 	    // Panel principal pour aligner les boutons verticalement
 	    JPanel verticalButtonPanel = new JPanel();
@@ -137,31 +144,5 @@ public class CreatorToolDialog {
 
 	    return verticalButtonPanel;
 	}
-	
-	
-	public static void playSound(String soundFile) {
-        stopSound(); // Stop any previously playing sound
-
-        try {
-            URL soundURL = CreatorToolDialog.class.getClassLoader().getResource(soundFile);
-            if (soundURL == null) {
-                return; // No sound file to play
-            }
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(soundURL);
-            currentClip = AudioSystem.getClip();
-            currentClip.open(audioInput);
-            currentClip.start();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void stopSound() {
-        if (currentClip != null && currentClip.isRunning()) {
-            currentClip.stop();
-            currentClip.close();
-            currentClip = null;
-        }
-    }
 
 }

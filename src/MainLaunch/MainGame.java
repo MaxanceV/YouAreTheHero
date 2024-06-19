@@ -49,7 +49,7 @@ public class MainGame {
 		if(null != jDialog) {
 			jDialog.dispose();
 		}
-		CreatorToolDialog.stopSound();
+		SoundManager.stopSound();
         SwingUtilities.invokeLater(() -> {
             new DialogMainMenu(frame).setVisible(true);
         });
@@ -95,7 +95,7 @@ public class MainGame {
 	private static void launchNode() {
 		ANode node = nodeOfTheStory.getNodeFromId(joueur.getCurrentNode());
 		if(null != node) {
-			CreatorToolDialog.playSound("sons/" + node.getId() + ".wav");
+			SoundManager.playSound("sons/" + node.getId() + ".wav");
 			node.launchNode(joueur, frame);
 		} else {
 			//TODO
@@ -109,12 +109,12 @@ public class MainGame {
 		}
 		joueur.setCurrentNode(id);
 		SaveManager.savePlayer(joueur);
-		CreatorToolDialog.stopSound();
+		SoundManager.stopSound();
 		launchNode();
 	}
 	
 	public static void endOfGameAndQuit() {
-		CreatorToolDialog.stopSound();
+		SoundManager.stopSound();
 		deleteSaveOfPlayer(null);
 		quit(null);
 	}

@@ -27,6 +27,7 @@ public class DialogLoadSave extends JDialog {
     public DialogLoadSave(JFrame parent) {
         super(parent, "Charger une Sauvegarde", true);  // true pour rendre le dialogue modal
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
 
 
         // Panel pour sélectionner une sauvegarde

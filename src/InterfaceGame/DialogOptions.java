@@ -19,6 +19,7 @@ public class DialogOptions extends JDialog {
     public DialogOptions(JFrame parent, JDialog jDialog) {
         super(parent, "Options", true);  // true pour rendre le dialogue modal
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
 
         // Label pour informer de la sauvegarde automatique
         JLabel autoSaveLabel = new JLabel("Votre partie est sauvegardée automatiquement.");

@@ -25,6 +25,7 @@ public class DialogStatistics extends JDialog {
     public DialogStatistics(JFrame parent, TPersonnage joueur) {
         super(parent, "Statistiques", true);
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
         setLayout(new BorderLayout());
 
         JPanel infoPanel = setupInfoPanel(joueur);

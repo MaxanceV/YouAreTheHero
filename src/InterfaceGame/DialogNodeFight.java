@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import MainLaunch.MainGame;
+import MainLaunch.SoundManager;
 import Representation.node.TNodeFight;
 import Univers.TPersonnage;
 import Univers.TPlayer;
@@ -40,6 +41,7 @@ public class DialogNodeFight extends JDialog  {
         this.ennemi = node.getEnnemi();
         this.node = node;
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
 
         // Panel principal avec l'image de fond
         JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(node);
@@ -154,6 +156,7 @@ public class DialogNodeFight extends JDialog  {
     }
     
     private void handleHeal() {
+    	SoundManager.playSoundCompetence(selectedCompetence);
     	int soin = random.nextInt(selectedCompetence.getMaxDeHeal()) + 1;
     	joueur.gagnePointVie(soin);
         descriptionLabel.setText("<html>Vous avez gagné " + soin + " points de vie.</html>");
@@ -169,6 +172,7 @@ public class DialogNodeFight extends JDialog  {
         int resultatDe = random.nextInt(20) + 1 + selectedCompetence.getModif();
         if (resultatDe > ennemi.getClasseArmur()) {
            descriptionLabel.setText("<html>Vous avez touché " + ennemi.getNom() + " avec " + selectedCompetence.getNom() + ".</html>");
+           SoundManager.playSoundCompetence(selectedCompetence);
            showDamageButton();
         } else {
             descriptionLabel.setText("<html>Vous n'avez pas réussi à toucher " + ennemi.getNom() + "</html>");
@@ -217,6 +221,7 @@ public class DialogNodeFight extends JDialog  {
         } else if (competence.getMaxDeDegat() > 0) {  // Compétence de dégat
         	int resultatDe = random.nextInt(20) + 1 + competence.getModif();
             if (resultatDe > joueur.getClasseArmur()) {
+            	SoundManager.playSoundCompetence(competence);
                 int degat = random.nextInt(competence.getMaxDeDegat()) + 1;
                 joueur.pertPointVie(degat);
                 descriptionLabel.setText("<html>" + ennemi.getNom() + " vous a touché avec " + competence.getNom() + " et vous subissez " + degat + " points de dégâts.</html>");
@@ -224,6 +229,7 @@ public class DialogNodeFight extends JDialog  {
                 descriptionLabel.setText("<html>" + ennemi.getNom() + " n'a pas réussi à vous toucher.</html>");
             }
         } else {  // Compétence de soin
+        	SoundManager.playSoundCompetence(competence);
             int soin = random.nextInt(competence.getMaxDeHeal()) + 1;
             ennemi.gagnePointVie(soin);
             descriptionLabel.setText("<html>" + ennemi.getNom() + "s'est soigné de " + soin + " points de vie.</html>");
@@ -253,8 +259,8 @@ public class DialogNodeFight extends JDialog  {
     }
 
     private void updateHealthLabels() {
-        playerHealthLabel.setText("Votre vie : " + joueur.getPointVie());
-        enemyHealthLabel.setText("PV de " + ennemi.getNom() + " : " + ennemi.getPointVie());
+        playerHealthLabel.setText("Votre vie : " + joueur.getPointVie()+"/"+joueur.getRace().getHitPointsMax());
+        enemyHealthLabel.setText("PV " + ennemi.getNom() + ": " + ennemi.getPointVie() + "/" + ennemi.getRace().getHitPointsMax());
     }
 
     private void checkEndOfCombat() {

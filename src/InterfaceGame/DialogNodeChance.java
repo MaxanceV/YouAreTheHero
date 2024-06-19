@@ -27,6 +27,7 @@ public class DialogNodeChance extends JDialog  {
     public DialogNodeChance(JFrame parent, TPlayer joueur, TNodeChance node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
         random = new Random();
         
         // Panel principal avec l'image de fond

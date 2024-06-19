@@ -45,5 +45,9 @@ public enum ECompetence {
 		return maxDeHeal;
 	}
 
+	public String getId() {
+		return id;
+	}
+
 
 }

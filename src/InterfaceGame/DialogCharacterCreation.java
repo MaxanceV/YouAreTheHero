@@ -29,6 +29,7 @@ public class DialogCharacterCreation extends JDialog {
         setLayout(new GridLayout(5, 1));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
 
         // Nom du personnage
         add(new JLabel("Entrez votre nom :"));

@@ -24,6 +24,7 @@ public class DialogNodeDecision extends JDialog {
     public DialogNodeDecision(JFrame parent, TPlayer joueur, TNodeDecision node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
 
 
         // Panel principal avec l'image de fond

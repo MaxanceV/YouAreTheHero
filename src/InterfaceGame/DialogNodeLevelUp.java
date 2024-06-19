@@ -24,6 +24,7 @@ public class DialogNodeLevelUp extends JDialog  {
     public DialogNodeLevelUp(JFrame parent, TPlayer joueur, TNodeLevelUp node) {
         super(parent, "You Are The Hero", true);  // true pour rendre le dialogue modal
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setIconImage(CreatorToolDialog.getIconOfDialog());
         
         // Panel principal avec l'image de fond
         JLabel backgroundLabel = CreatorToolDialog.createBackgroundLabel(node);
@@ -46,6 +47,7 @@ public class DialogNodeLevelUp extends JDialog  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 joueur.levelUp();
+                joueur.gagnePointVie(3);
                 descriptionLabel.setText("Félicitations ! Vous êtes devenu " + joueur.getClasse().getDescription() + " ! ");
                 actionButton.setText("Continuer");
                 actionButton.removeActionListener(this);
