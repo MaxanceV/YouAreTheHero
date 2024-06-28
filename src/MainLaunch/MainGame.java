@@ -22,6 +22,21 @@ import Univers.TPlayer;
 import Univers.Enum.ERace;
 import Univers.classe.AClasseGuerrier;
 
+/**
+ * Main class of the game "You Are The Hero".
+ * 
+ * This game was developed as a part of an educational project by Maxance and Ferdinand.
+ * The purpose of this project was to apply and expand our knowledge in software development,
+ * focusing on creating engaging user experiences with Java Swing for graphical user interfaces,
+ * managing audio playback, and implementing a save/load system.
+ * 
+ * Creators:
+ * - Maxance Villame
+ * - Ferdinand Martin-Lavigne
+ * 
+ * We hope you enjoy playing it as much as we enjoyed making it!
+ */
+
 // MainGame.java
 public class MainGame {
 	private static JFrame frame;
