@@ -48,6 +48,11 @@ public enum ECompetence {
 	public String getId() {
 		return id;
 	}
+	
+    @Override
+    public String toString() {
+        return nom + ": " + desc + " (Modif: " + modif + ", Dégâts: " + maxDeDegat + ", Soin: " + maxDeHeal + ")";
+    }
 
 
 }

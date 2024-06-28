@@ -93,4 +93,44 @@ public class TPersonnage implements Serializable {
 			setClasse(classeTmp);
 		}
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    TPersonnage other = (TPersonnage) obj;
+	    if (nom == null) {
+	        if (other.nom != null) {
+	            return false;
+	        }
+	    } else if (!nom.equals(other.nom)) {
+	        return false;
+	    }
+	    if (race != other.race) {
+	        return false;
+	    }
+	    if (classeArmure != other.classeArmure) {
+	        return false;
+	    }
+	    if (pointVie != other.pointVie) {
+	        return false;
+	    }
+	    return classe != null ? classe.equals(other.classe) : other.classe == null;
+	}
+	
+	@Override
+	public String toString() {
+	    return "TPersonnage{" +
+	           "nom='" + nom + '\'' +
+	           ", race=" + race +
+	           ", classe=" + classe +
+	           ", pointVie=" + pointVie +
+	           ", classeArmure=" + classeArmure +
+	           '}';
+	}
+	
 }

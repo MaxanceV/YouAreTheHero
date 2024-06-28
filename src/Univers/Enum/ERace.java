@@ -42,4 +42,9 @@ public enum ERace implements Serializable{
 		}
 		return ret;
 	}
+	
+    @Override
+    public String toString() {
+        return description + " (PV max: " + hitPoints + ", CA: " + armorClass + ")";
+    }
 }

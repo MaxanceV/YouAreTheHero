@@ -29,31 +29,31 @@ public abstract class ANodeContainer {
 		return getNodesOfTheGame().get(id);
 	}
 	
-	protected TNodeChance addNodeChance(String id, String desc, String descchoix) {
+	public TNodeChance addNodeChance(String id, String desc, String descchoix) {
 		TNodeChance node = new TNodeChance(id, desc, descchoix);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 	
-	protected TNodeDecision addNodeDecision(String id, String desc, String descchoix) {
+	public TNodeDecision addNodeDecision(String id, String desc, String descchoix) {
 		TNodeDecision node = new TNodeDecision(id, desc, descchoix);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 	
-	protected TNodeFight addNodeFight(String id, String desc, String descchoix, TPersonnage ennemi) {
+	public TNodeFight addNodeFight(String id, String desc, String descchoix, TPersonnage ennemi) {
 		TNodeFight node = new TNodeFight(id, desc, descchoix, ennemi);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 	
-	protected TNodeTerminal addNodeTerminal(String id, String desc, String descchoix) {
+	public TNodeTerminal addNodeTerminal(String id, String desc, String descchoix) {
 		TNodeTerminal node = new TNodeTerminal(id, desc, descchoix);
 		nodesOfTheGame.put(id, node);
 		return node;
 	}
 
-	protected TNodeLevelUp addNodeLevelUp(String id, String desc, String descchoix) {
+	public TNodeLevelUp addNodeLevelUp(String id, String desc, String descchoix) {
 		TNodeLevelUp node = new TNodeLevelUp(id, desc, descchoix);
 		nodesOfTheGame.put(id, node);
 		return node;

@@ -25,6 +25,26 @@ public class TPlayer extends TPersonnage {
 		this.currentNode = currentNode;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+	    if (!super.equals(obj)) {
+	        return false;  // vérifie d'abord l'égalité de la classe parente
+	    }
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    TPlayer other = (TPlayer) obj;
+	    return currentNode == null ? other.currentNode == null : currentNode.equals(other.currentNode);
+	}
 	
-
+	@Override
+	public String toString() {
+	    return "TPlayer{" +
+	           "currentNode='" + currentNode + '\'' +
+	           ", " + super.toString().substring(super.toString().indexOf("{") + 1);
+	}
+	
 }
